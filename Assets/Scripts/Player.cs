@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector3(-35.0f, 14.0f, 0.0f);
+        transform.position = new Vector3(0, 0, 0.0f);
         rb = this.GetComponent<Rigidbody2D>();
         playerSounds = this.GetComponent<AudioSource>();
     }
