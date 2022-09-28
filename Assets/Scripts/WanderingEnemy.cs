@@ -7,7 +7,6 @@ public class WanderingEnemy : MonoBehaviour
     private bool soundHeard;
     public float speed = 2.5f;
     public Vector2 movement;
-    public GameManager gm;
     public Rigidbody2D rb;
 
     // Start is called before the first frame update

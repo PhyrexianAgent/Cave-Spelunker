@@ -4,21 +4,15 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    private Transform playerTransform;
-    public GameManager gm;
+    public Transform player;
     // Start is called before the first frame update
     void Start()
     {
-        playerTransform = GameObject.FindWithTag("Player").transform;
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
-            Vector3 temp = transform.position;
-            temp.x = playerTransform.position.x;
-            transform.position = temp;
-            temp.y = playerTransform.position.y;
-            transform.position = temp;
+        transform.position = new Vector3(player.position.x, player.position.y, -1); // have to set z to -1 becuase unity is not a 2d game engine. It runs 2d game in a 3d space (which I despise)
     }
 }
