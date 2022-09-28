@@ -8,6 +8,6 @@ public class PlayGameScript : MonoBehaviour
     [SerializeField] private string firstLevelSceneName = "Level 1";
     public void WasClicked()
     {
-        SceneManager.LoadScene(firstLevelSceneName); // note that when adding new scenes add them to the corretc area in build settings.
+        SceneManager.LoadScene(firstLevelSceneName); // note that when adding new scenes add them to the correct area in build settings.
     }
 }
