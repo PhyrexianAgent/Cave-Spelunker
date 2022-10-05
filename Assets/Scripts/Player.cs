@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     }
 
     private const float FALL_MULTIPLIER = 2.5f;
-    private const float LOW_JUMP_MULTIPLIER = 2f;
+    private const float LOW_JUMP_MULTIPLIER = 1f;
 
     [SerializeField] private float speed;
     private bool isGrounded = false;
@@ -46,8 +46,8 @@ public class Player : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
         }
-        //Jump();
-        //BetterJump();
+        Jump();
+        BetterJump();
         //CheckIfGrounded();
     }
     void Move()
@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
     }
     void Jump() // temporarly disabling for now as we can do jump later
     {
-        if ((Input.GetKeyDown("up") || Input.GetKeyDown("w")) && isGrounded == true)
+        if ((Input.GetKeyDown("up") || Input.GetKeyDown("w")) && rb.velocity.y == 0)
         {
             //playerSounds.PlayOneShot(jump);
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
