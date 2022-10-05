@@ -46,9 +46,9 @@ public class Player : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
         }
-        //Jump();
-        //BetterJump();
-        //CheckIfGrounded();
+        Jump();
+        BetterJump();
+        CheckIfGrounded();
     }
     void Move()
     {
@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
     }
     void Jump() // temporarly disabling for now as we can do jump later
     {
-        if ((Input.GetKeyDown("up") || Input.GetKeyDown("w")) && isGrounded == true)
+        if ((Input.GetKeyDown("up") || Input.GetKeyDown("w")) && rb.velocity.y == 0)
         {
             //playerSounds.PlayOneShot(jump);
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
@@ -75,16 +75,15 @@ public class Player : MonoBehaviour
             rb.velocity += Vector2.up * Physics2D.gravity * (LOW_JUMP_MULTIPLIER - 1) * Time.deltaTime;
         }
     }
-/*    void CheckIfGrounded()
+    void CheckIfGrounded()
     {
-        Collider2D collider = Physics2D.OverlapCircle(isGroundedChecker.position, checkGroundRadius, groundLayer);
-        if (collider != null)
+        if(rb.velocity.y == 0)
         {
             isGrounded = true;
-        }
+        } 
         else
         {
             isGrounded = false;
         }
-    }*/
+    }
 }
