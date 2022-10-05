@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     private const float LOW_JUMP_MULTIPLIER = 2f;
 
     [SerializeField] private float speed;
-    private bool isGrounded = false;
+    //private bool isGrounded;
 
     public float jumpSpeed;
     public Rigidbody2D rb;
@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
         }
         Jump();
         BetterJump();
-        CheckIfGrounded();
+        //CheckIfGrounded();
     }
     void Move()
     {
@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
         float moveBy = x * speed;
         rb.velocity = new Vector2(moveBy, rb.velocity.y);
     }
-    void Jump() // temporarly disabling for now as we can do jump later
+    void Jump()
     {
         if ((Input.GetKeyDown("up") || Input.GetKeyDown("w")) && rb.velocity.y == 0)
         {
@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
         }
     }
-    void BetterJump() // temporarly disabling for now as we can do jump later
+    void BetterJump()
     {
         if (rb.velocity.y < 0)
         {
@@ -75,15 +75,18 @@ public class Player : MonoBehaviour
             rb.velocity += Vector2.up * Physics2D.gravity * (LOW_JUMP_MULTIPLIER - 1) * Time.deltaTime;
         }
     }
-    void CheckIfGrounded()
+
+
+    /*void CheckIfGrounded()
     {
-        if(rb.velocity.y == 0)
+        Collider2D collider = Physics2D.OverlapCircle(isGroundedChecker.position, checkGroundRadius, groundLayer);
+        if (collider != null)
         {
             isGrounded = true;
-        } 
+        }
         else
         {
             isGrounded = false;
         }
-    }
+    }*/
 }
