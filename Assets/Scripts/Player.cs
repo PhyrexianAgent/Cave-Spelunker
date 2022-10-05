@@ -6,18 +6,16 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     public static Player instance;
-    private void Awake()
-    {
-        instance = this;
-    }
 
+    private const float MAX_GROUND_TEST_DIST = 1.68f;
     private const float FALL_MULTIPLIER = 2.5f;
     private const float LOW_JUMP_MULTIPLIER = 2f;
 
     [SerializeField] private float speed;
-    //private bool isGrounded;
+    [SerializeField] private LayerMask groundLayerMask;
+    private bool isGrounded = true;
 
-    public float jumpSpeed;
+    [SerializeField] private float jumpSpeed;
     public Rigidbody2D rb;
 
     public bool positionLocked;
@@ -30,6 +28,11 @@ public class Player : MonoBehaviour
     //public AudioClip jump;
 
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         //playerSounds = this.GetComponent<AudioSource>();
@@ -48,7 +51,7 @@ public class Player : MonoBehaviour
         }
         Jump();
         BetterJump();
-        //CheckIfGrounded();
+        CheckIfGrounded();
     }
     void Move()
     {
@@ -58,7 +61,7 @@ public class Player : MonoBehaviour
     }
     void Jump()
     {
-        if ((Input.GetKeyDown("up") || Input.GetKeyDown("w")) && rb.velocity.y == 0)
+        if ((Input.GetKeyDown("up") || Input.GetKeyDown("w")) && isGrounded)
         {
             //playerSounds.PlayOneShot(jump);
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
@@ -77,16 +80,12 @@ public class Player : MonoBehaviour
     }
 
 
-    /*void CheckIfGrounded()
+    void CheckIfGrounded()
     {
-        Collider2D collider = Physics2D.OverlapCircle(isGroundedChecker.position, checkGroundRadius, groundLayer);
-        if (collider != null)
-        {
-            isGrounded = true;
-        }
-        else
-        {
-            isGrounded = false;
-        }
-    }*/
+        //1.62
+        //RaycastHit2D ray = Physics2D.Raycast(transform.position, Vector2.down);
+        //isGrounded = ray.distance <= MAX_GROUND_TEST_DIST;
+        Ray2D ray = new Ray2D(transform.position, Vector2.down);
+        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, MAX_GROUND_TEST_DIST, groundLayerMask);
+    }
 }
