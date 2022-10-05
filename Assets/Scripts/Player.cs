@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    public static Player instance;
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private const float FALL_MULTIPLIER = 2.5f;
     private const float LOW_JUMP_MULTIPLIER = 2f;
 
@@ -13,6 +19,8 @@ public class Player : MonoBehaviour
 
     public float jumpSpeed;
     public Rigidbody2D rb;
+
+    public bool positionLocked;
     //public Vector2 movement;
     //public GameManager gm;
     //public Transform isGroundedChecker;
@@ -30,7 +38,14 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
+        if (!positionLocked)
+        {
+            Move();
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
+        }
         //Jump();
         //BetterJump();
         //CheckIfGrounded();

@@ -61,5 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b9e82657da793e45b3a984f46e60df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyAfterPlay: 1
-  message: I destroy after play
+  destroyAfterPlay: 0
+  message: Hello World
+  lockPosition: 0
+  playTime: 0
