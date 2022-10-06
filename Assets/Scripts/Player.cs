@@ -13,10 +13,13 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float speed;
     [SerializeField] private LayerMask groundLayerMask;
+    [SerializeField] private float walkSoundSize = 3;
+    [SerializeField] private float walkSoundDamage = 10;
     private bool isGrounded = true;
 
     [SerializeField] private float jumpSpeed;
     public Rigidbody2D rb;
+    public GameObject soundPrefab;
 
     public bool positionLocked;
     //public Vector2 movement;
@@ -52,6 +55,11 @@ public class Player : MonoBehaviour
         Jump();
         BetterJump();
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, MAX_GROUND_TEST_DIST, groundLayerMask);
+
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            GenerateSound(walkSoundDamage, walkSoundSize);
+        }
     }
     void Move()
     {
@@ -77,5 +85,11 @@ public class Player : MonoBehaviour
         {
             rb.velocity += Vector2.up * Physics2D.gravity * (LOW_JUMP_MULTIPLIER - 1) * Time.deltaTime;
         }
+    }
+
+    private void GenerateSound(float damage, float size)
+    {
+        GameObject soundMade = Instantiate(soundPrefab, transform.position, Quaternion.identity);
+        soundMade.GetComponent<Sound>().GenerateSound(damage, size);
     }
 }

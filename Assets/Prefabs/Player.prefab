@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6820748070311263058}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,8 +74,11 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  walkSoundSize: 5
+  walkSoundDamage: 10
   jumpSpeed: 10
   rb: {fileID: 1655382623063545581}
+  soundPrefab: {fileID: 1386395118515020664, guid: c93954b3a5bc931499566b6a4cb8fda1, type: 3}
   positionLocked: 0
 --- !u!70 &2199122865708589905
 CapsuleCollider2D:

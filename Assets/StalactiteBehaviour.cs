@@ -19,13 +19,13 @@ public class StalactiteBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J))
+        /*if (Input.GetKeyDown(KeyCode.J))
         {
             TakeDamage(HEALTH_MAX);
-        }
+        }*/
     }
 
-    private void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         health -= damage;
         if (health <= 0)
@@ -39,7 +39,7 @@ public class StalactiteBehaviour : MonoBehaviour
     {
         if (isFalling)
         {
-            Destroy(collision.gameObject);
+            Destroy(gameObject);
         }
     }
 }

@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - DialogueTrigger
+  - Sound
+  - Stalactite
   layers:
   - Default
   - TransparentFX
