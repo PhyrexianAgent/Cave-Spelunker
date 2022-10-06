@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
         }
         Jump();
         BetterJump();
-        CheckIfGrounded();
+        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, MAX_GROUND_TEST_DIST, groundLayerMask);
     }
     void Move()
     {
@@ -77,15 +77,5 @@ public class Player : MonoBehaviour
         {
             rb.velocity += Vector2.up * Physics2D.gravity * (LOW_JUMP_MULTIPLIER - 1) * Time.deltaTime;
         }
-    }
-
-
-    void CheckIfGrounded()
-    {
-        //1.62
-        //RaycastHit2D ray = Physics2D.Raycast(transform.position, Vector2.down);
-        //isGrounded = ray.distance <= MAX_GROUND_TEST_DIST;
-        Ray2D ray = new Ray2D(transform.position, Vector2.down);
-        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, MAX_GROUND_TEST_DIST, groundLayerMask);
     }
 }
