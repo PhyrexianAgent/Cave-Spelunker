@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float jumpSpeed;
     public Rigidbody2D rb;
     public GameObject soundPrefab;
+    public GameObject flashlight;
 
     public bool positionLocked;
     //public Vector2 movement;
@@ -55,11 +56,24 @@ public class Player : MonoBehaviour
         Jump();
         BetterJump();
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, MAX_GROUND_TEST_DIST, groundLayerMask);
-
+        RotateFlashlight();
         if (Input.GetKeyDown(KeyCode.J))
         {
             GenerateSound(walkSoundDamage, walkSoundSize);
         }
+    }
+
+    private void RotateFlashlight()
+    {
+        Debug.Log(Camera.main == null);
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        float angleBetweenPoints = GetAngleBetweenPoints(mousePos, transform.position);
+        flashlight.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleBetweenPoints - 90));
+    }
+
+    private float GetAngleBetweenPoints(Vector2 a, Vector2 b)
+    {
+        return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
     }
     void Move()
     {
