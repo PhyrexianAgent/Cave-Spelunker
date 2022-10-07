@@ -73,7 +73,6 @@ public class PlayerAnimation : MonoBehaviour
         }
         if(Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow)){
             anim.SetTrigger("uncrouch");
-            // -0.26
             collider2D.size = initialBoxSize;
             collider2D.offset = initialBoxOffSet;
         }
