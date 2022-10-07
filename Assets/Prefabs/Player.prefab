@@ -95,7 +95,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 1655382623063545569}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e643ddc199cac2346a83ecd1480eb9a7, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -131,7 +131,7 @@ DistanceJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.005
+  m_Distance: 3.979598
   m_MaxDistanceOnly: 0
 --- !u!120 &1382327490
 LineRenderer:

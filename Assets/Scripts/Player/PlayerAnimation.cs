@@ -17,11 +17,15 @@ public class PlayerAnimation : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerTransform = Player.instance.GetComponent<Transform>();
         theCam = Camera.main;
+        initialBoxSize = collider2D.size;
+        initialBoxOffSet = collider2D.offset;
     }
 
     Vector3 mousePosition;
     Vector3 playerPosition;
     Transform playerTransform;
+    Vector2 initialBoxSize;
+    Vector2 initialBoxOffSet;
     void Update()
     {
         mousePosition = Input.mousePosition;
@@ -62,11 +66,16 @@ public class PlayerAnimation : MonoBehaviour
 
         if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) && Player.instance.getIsGrounded())){
             anim.SetTrigger("crouch");
-            collider2D.size *= 0.5f;
+            Vector2 crouchBox = new Vector2(initialBoxSize.x, initialBoxSize.y / 2);
+            collider2D.size = crouchBox;
+            Vector2 crouchOffSet = new Vector2(initialBoxOffSet.x, -0.26f);
+            collider2D.offset = crouchOffSet;
         }
         if(Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow)){
             anim.SetTrigger("uncrouch");
-            collider2D.size *= 2f;
+            // -0.26
+            collider2D.size = initialBoxSize;
+            collider2D.offset = initialBoxOffSet;
         }
         
     }
