@@ -8,6 +8,8 @@ public class PlayerAnimation : MonoBehaviour
     private Rigidbody2D rigidBody;
     private Animator anim;
     private SpriteRenderer spriteRenderer;
+    [SerializeField]
+    private CapsuleCollider2D collider2D;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -34,5 +36,15 @@ public class PlayerAnimation : MonoBehaviour
         anim.SetFloat("xVelocity", Mathf.Abs(rigidBody.velocity.x));
         anim.SetFloat("yVelocity", rigidBody.velocity.y);
         anim.SetBool("isGround", Player.instance.getIsGrounded());
+
+        if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) && Player.instance.getIsGrounded())){
+            anim.SetTrigger("crouch");
+            collider2D.size *= 0.5f;
+        }
+        if(Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow)){
+            anim.SetTrigger("uncrouch");
+            collider2D.size *= 2f;
+        }
+        
     }
 }

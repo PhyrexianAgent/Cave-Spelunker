@@ -227,6 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 1655382623063545581}
+  collider2D: {fileID: 2199122865708589905}
 --- !u!1001 &1655382624463137151
 PrefabInstance:
   m_ObjectHideFlags: 0
