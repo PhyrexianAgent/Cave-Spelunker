@@ -10,16 +10,39 @@ public class PlayerAnimation : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     [SerializeField]
     private CapsuleCollider2D collider2D;
+    private Camera theCam;
     void Start()
     {
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        playerTransform = Player.instance.GetComponent<Transform>();
+        theCam = Camera.main;
     }
 
-    
+    Vector3 mousePosition;
+    Vector3 playerPosition;
+    Transform playerTransform;
     void Update()
     {
-        if(rigidBody.velocity.x < -0.2)
+        mousePosition = Input.mousePosition;
+        playerTransform = Player.instance.GetComponent<Transform>();
+        playerPosition = theCam.WorldToScreenPoint(playerTransform.localPosition);
+
+        if (mousePosition.x < playerPosition.x)
+        {
+            // flip sprite if mouse behind
+            playerTransform.localScale = new Vector3(-1f, playerTransform.localScale.y, playerTransform.localScale.z);
+            
+        }
+        else
+        {
+            playerTransform.localScale = new Vector3(1f, playerTransform.localScale.y, playerTransform.localScale.z);
+            
+        }
+
+
+
+        /*if(rigidBody.velocity.x < -0.2)
         {
             if(spriteRenderer.flipX == false)
             {
@@ -32,7 +55,7 @@ public class PlayerAnimation : MonoBehaviour
             {
                 spriteRenderer.flipX = false;
             }
-        }
+        }*/
         anim.SetFloat("xVelocity", Mathf.Abs(rigidBody.velocity.x));
         anim.SetFloat("yVelocity", rigidBody.velocity.y);
         anim.SetBool("isGround", Player.instance.getIsGrounded());
