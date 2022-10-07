@@ -92,4 +92,9 @@ public class Player : MonoBehaviour
         GameObject soundMade = Instantiate(soundPrefab, transform.position, Quaternion.identity);
         soundMade.GetComponent<Sound>().GenerateSound(damage, size);
     }
+
+    public bool getIsGrounded()
+    { // Used for animation purposes
+        return isGrounded;
+    }
 }

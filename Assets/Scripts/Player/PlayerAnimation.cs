@@ -31,6 +31,8 @@ public class PlayerAnimation : MonoBehaviour
                 spriteRenderer.flipX = false;
             }
         }
-        anim.SetFloat("speed", Mathf.Abs(rigidBody.velocity.x));
+        anim.SetFloat("xVelocity", Mathf.Abs(rigidBody.velocity.x));
+        anim.SetFloat("yVelocity", rigidBody.velocity.y);
+        anim.SetBool("isGround", Player.instance.getIsGrounded());
     }
 }
