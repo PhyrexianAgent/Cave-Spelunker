@@ -66,7 +66,7 @@ public class PlayerAnimation : MonoBehaviour
 
         if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) && Player.instance.getIsGrounded())){
             anim.SetTrigger("crouch");
-            Vector2 crouchBox = new Vector2(initialBoxSize.x, initialBoxSize.y / 2);
+            Vector2 crouchBox = new Vector2(initialBoxSize.x * 2, initialBoxSize.y / 2);
             collider2D.size = crouchBox;
             Vector2 crouchOffSet = new Vector2(initialBoxOffSet.x, -0.26f);
             collider2D.offset = crouchOffSet;
