@@ -23,11 +23,6 @@ public class Player : MonoBehaviour
     public GameObject flashlight;
 
     public bool positionLocked;
-    //public Vector2 movement;
-    //public GameManager gm;
-    //public Transform isGroundedChecker;
-    //public float checkGroundRadius;
-    //public LayerMask groundLayer;
     //public AudioSource playerSounds;
     //public AudioClip jump;
 
