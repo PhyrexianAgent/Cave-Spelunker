@@ -4,78 +4,86 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
+    private const float MAX_WALK_TIME = 0.5f;
+
     [SerializeField]
     private Rigidbody2D rigidBody;
     private Animator anim;
-    private SpriteRenderer spriteRenderer;
+    [SerializeField] private float walkSoundSize = 8;
+    [SerializeField] private float walkSoundDamage = 10;
+    //private SpriteRenderer spriteRenderer;
     [SerializeField]
     public CapsuleCollider2D collider2D;
     private Camera theCam;
+    private Transform playerTransform;
+    public GameObject soundPrefab;
+
+    private float walkTime = MAX_WALK_TIME;
+
     void Start()
     {
         anim = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         playerTransform = Player.instance.GetComponent<Transform>();
         theCam = Camera.main;
         initialBoxSize = collider2D.size;
         initialBoxOffSet = collider2D.offset;
     }
 
-    Vector3 mousePosition;
-    Vector3 playerPosition;
-    Transform playerTransform;
     Vector2 initialBoxSize;
     Vector2 initialBoxOffSet;
     void Update()
     {
-        mousePosition = Input.mousePosition;
+        Vector2 mousePosition = Input.mousePosition;
         playerTransform = Player.instance.GetComponent<Transform>();
-        playerPosition = theCam.WorldToScreenPoint(playerTransform.localPosition);
+        Vector2 playerPosition = theCam.WorldToScreenPoint(playerTransform.localPosition);
+        playerTransform.localScale = new Vector3(mousePosition.x < playerPosition.x  ? - 1f : 1f, playerTransform.localScale.y, playerTransform.localScale.z);
 
-        if (mousePosition.x < playerPosition.x)
-        {
-            // flip sprite if mouse behind
-            playerTransform.localScale = new Vector3(-1f, playerTransform.localScale.y, playerTransform.localScale.z);
-            
-        }
-        else
-        {
-            playerTransform.localScale = new Vector3(1f, playerTransform.localScale.y, playerTransform.localScale.z);
-            
-        }
-
-
-
-        /*if(rigidBody.velocity.x < -0.2)
-        {
-            if(spriteRenderer.flipX == false)
-            {
-                spriteRenderer.flipX = true;
-            }
-        }
-        if(rigidBody.velocity.x > 0.2)
-        {
-            if(spriteRenderer.flipX == true)
-            {
-                spriteRenderer.flipX = false;
-            }
-        }*/
         anim.SetFloat("xVelocity", Mathf.Abs(rigidBody.velocity.x));
         anim.SetFloat("yVelocity", rigidBody.velocity.y);
         anim.SetBool("isGround", Player.instance.getIsGrounded());
 
-        if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) && Player.instance.getIsGrounded())){
+        MovementDetects();
+        TestWalk();
+    }
+
+    private void TestWalk()
+    {
+        if (anim.GetFloat("xVelocity") > 0.01f && anim.GetFloat("yVelocity") != 0)
+        {
+            walkTime -= Time.deltaTime;
+            if (walkTime <= 0)
+            {
+                walkTime = MAX_WALK_TIME;
+                CreateSound();
+            }
+        }
+        else if (walkTime != MAX_WALK_TIME)
+        {
+            walkTime = MAX_WALK_TIME;
+        }
+    }
+
+    private void MovementDetects()
+    {
+        if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) && Player.instance.getIsGrounded()))
+        {
             anim.SetTrigger("crouch");
             Vector2 crouchBox = new Vector2(initialBoxSize.x * 2, initialBoxSize.y / 2);
             collider2D.size = crouchBox;
             Vector2 crouchOffSet = new Vector2(initialBoxOffSet.x, -0.26f);
             collider2D.offset = crouchOffSet;
         }
-        if(Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow)){
+        if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow))
+        {
             anim.SetTrigger("uncrouch");
             collider2D.size = initialBoxSize;
             collider2D.offset = initialBoxOffSet;
         }
-        
+    }
+
+    private void CreateSound() // will change a bit when running is added to have running make a louder noise
+    {
+        GameObject newSound = Instantiate(soundPrefab, transform.position, Quaternion.identity);
+        newSound.GetComponent<Sound>().GenerateSound(walkSoundDamage, walkSoundSize);
     }
 }

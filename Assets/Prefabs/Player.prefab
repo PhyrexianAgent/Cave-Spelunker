@@ -81,6 +81,7 @@ MonoBehaviour:
     m_Bits: 8
   walkSoundSize: 5
   walkSoundDamage: 10
+  jumpSoundDamage: 10
   jumpSpeed: 13
   rb: {fileID: 1655382623063545581}
   soundPrefab: {fileID: 1386395118515020664, guid: c93954b3a5bc931499566b6a4cb8fda1, type: 3}
@@ -478,6 +479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 1655382623063545581}
   collider2D: {fileID: 2199122865708589905}
+  soundPrefab: {fileID: 1386395118515020664, guid: c93954b3a5bc931499566b6a4cb8fda1, type: 3}
 --- !u!1 &6974555232215395869
 GameObject:
   m_ObjectHideFlags: 0
