@@ -9,7 +9,7 @@ public class PlayerAnimation : MonoBehaviour
     private Animator anim;
     private SpriteRenderer spriteRenderer;
     [SerializeField]
-    private CapsuleCollider2D collider2D;
+    public CapsuleCollider2D collider2D;
     private Camera theCam;
     void Start()
     {
