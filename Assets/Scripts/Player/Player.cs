@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private const float JUMP_SIZE_MULT = 0.785f;
 
     [SerializeField] private float speed;
+    private float moveBy;
     [SerializeField] private LayerMask groundLayerMask;
     [SerializeField] private float walkSoundSize = 3;
     [SerializeField] private float walkSoundDamage = 10;
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
     public Rigidbody2D rb;
     public GameObject soundPrefab;
     public GameObject flashlight;
+    
 
     public bool positionLocked;
     //public AudioSource playerSounds;
@@ -87,7 +89,21 @@ public class Player : MonoBehaviour
     void Move()
     {
         float x = Input.GetAxisRaw("Horizontal");
-        float moveBy = x * speed;
+
+        //Running
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+        {
+            moveBy = x * speed * 2;
+        // Sneaking
+        }else if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.RightControl))
+        {
+            moveBy = x * speed * 0.5f;
+        }
+        else
+        {
+            moveBy = x * speed;
+        }
+        
         rb.velocity = new Vector2(moveBy, rb.velocity.y);
     }
     void Jump()
