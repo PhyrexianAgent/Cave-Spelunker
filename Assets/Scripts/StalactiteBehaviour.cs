@@ -27,11 +27,14 @@ public class StalactiteBehaviour : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        Rigidbody2D body = GetComponent<Rigidbody2D>();
         health -= damage;
         if (health <= 0)
         {
             isFalling = true;
-            GetComponent<Rigidbody2D>().gravityScale = fallGravity;
+            //body.bodyType = RigidbodyType2D.Dynamic;
+            body.constraints = RigidbodyConstraints2D.None;
+            body.gravityScale = fallGravity;
         }
     }
 
