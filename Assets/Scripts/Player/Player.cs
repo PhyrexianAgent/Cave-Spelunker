@@ -10,11 +10,13 @@ public class Player : MonoBehaviour
     private const float MAX_GROUND_TEST_DIST = 1.68f;
     private const float FALL_MULTIPLIER = 2.5f;
     private const float LOW_JUMP_MULTIPLIER = 2f;
+    private const float JUMP_SIZE_MULT = 0.785f;
 
     [SerializeField] private float speed;
     [SerializeField] private LayerMask groundLayerMask;
     [SerializeField] private float walkSoundSize = 3;
     [SerializeField] private float walkSoundDamage = 10;
+    [SerializeField] private float jumpSoundDamage = 10;
     private bool isGrounded = true;
 
     [SerializeField] private float jumpSpeed;
@@ -50,11 +52,23 @@ public class Player : MonoBehaviour
         }
         Jump();
         BetterJump();
-        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, MAX_GROUND_TEST_DIST, groundLayerMask);
+        TestForGrounded();
+
         RotateFlashlight();
         if (Input.GetKeyDown(KeyCode.J))
         {
             GenerateSound(walkSoundDamage, walkSoundSize);
+        }
+    }
+
+    private void TestForGrounded()
+    {
+        bool oldGrounded = isGrounded;
+        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, MAX_GROUND_TEST_DIST, groundLayerMask);
+        if (!oldGrounded && isGrounded)
+        {
+            Debug.Log(GetComponent<Rigidbody2D>().velocity.y * JUMP_SIZE_MULT);
+            GenerateSound(jumpSoundDamage, Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y * JUMP_SIZE_MULT)); // done this way to make sure jumping up to ledges makes a smaller sound then landing from height
         }
     }
 
