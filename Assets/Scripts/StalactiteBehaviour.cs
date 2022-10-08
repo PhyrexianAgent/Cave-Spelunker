@@ -32,7 +32,6 @@ public class StalactiteBehaviour : MonoBehaviour
         if (health <= 0)
         {
             isFalling = true;
-            //body.bodyType = RigidbodyType2D.Dynamic;
             body.constraints = RigidbodyConstraints2D.None;
             body.gravityScale = fallGravity;
         }

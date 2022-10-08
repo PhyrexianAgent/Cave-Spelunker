@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 554200778}
   - component: {fileID: 554200779}
   - component: {fileID: 6842697580633477464}
+  - component: {fileID: 557440303694725508}
   m_Layer: 0
   m_Name: Stalactite 1
   m_TagString: Stalactite
@@ -188,3 +189,48 @@ PolygonCollider2D:
       - {x: 0.046065327, y: -1.21642}
       - {x: 0.07832381, y: -1.1403551}
       - {x: 0.10367894, y: -1.055}
+--- !u!114 &557440303694725508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5802172208597683765}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -0.055847228, y: -1.2313647, z: 0}
+  - {x: -0.17919058, y: -0.9218378, z: 0}
+  - {x: -0.32129443, y: -0.5014057, z: 0}
+  - {x: -0.4311124, y: -0.08104324, z: 0}
+  - {x: -0.5964925, y: 0.43882275, z: 0}
+  - {x: -0.64718795, y: 0.61353827, z: 0}
+  - {x: -0.7558205, y: 0.84257174, z: 0}
+  - {x: -0.8228109, y: 1.0670776, z: 0}
+  - {x: -0.8445684, y: 1.2296524, z: 0}
+  - {x: 0.84547365, y: 1.2079258, z: 0}
+  - {x: 0.60227597, y: 0.12867117, z: 0}
+  - {x: 0.5628816, y: 0.07548857, z: 0}
+  - {x: 0.5146234, y: 0.07647371, z: 0}
+  - {x: 0.4663652, y: 0.15132284, z: 0}
+  - {x: 0.37575766, y: -0.116559505, z: 0}
+  - {x: 0.31765082, y: -0.3420906, z: 0}
+  - {x: 0.2605289, y: -0.48883486, z: 0}
+  - {x: 0.21916473, y: -0.6602006, z: 0}
+  - {x: 0.16939044, y: -0.8619547, z: 0}
+  - {x: 0.0609833, y: -1.2019525, z: 0}
+  - {x: 0.011665583, y: -1.2551465, z: 0}
+  - {x: -0.039691806, y: -1.254736, z: 0}
+  m_ShapePathHash: 316183279
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -105978

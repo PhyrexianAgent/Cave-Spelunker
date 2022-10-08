@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 554200778}
   - component: {fileID: 554200779}
   - component: {fileID: 9190826757671469599}
+  - component: {fileID: 599551930408842655}
   m_Layer: 0
   m_Name: Stalactite 2
   m_TagString: Stalactite
@@ -170,3 +171,50 @@ PolygonCollider2D:
       - {x: 0.00075519085, y: -0.8721485}
       - {x: 0.027466841, y: -0.77697587}
       - {x: 0.13424811, y: -0.46332952}
+--- !u!114 &599551930408842655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5802172208597683765}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -0.20505977, y: -0.48592234, z: 0}
+  - {x: -0.25544977, y: -0.43052578, z: 0}
+  - {x: -0.3254074, y: -0.10572529, z: 0}
+  - {x: -0.42234838, y: 0.04468298, z: 0}
+  - {x: -0.45332932, y: 0.16810942, z: 0}
+  - {x: -0.45282972, y: 0.33800745, z: 0}
+  - {x: -0.49580348, y: 0.40396833, z: 0}
+  - {x: -0.5312818, y: 0.567369, z: 0}
+  - {x: -0.59800434, y: 0.8835039, z: 0}
+  - {x: 0.58988345, y: 0.8844304, z: 0}
+  - {x: 0.55756986, y: 0.7456722, z: 0}
+  - {x: 0.4994904, y: 0.46243334, z: 0}
+  - {x: 0.42788592, y: 0.3144474, z: 0}
+  - {x: 0.42390794, y: 0.27148342, z: 0}
+  - {x: 0.36821526, y: 0.19908333, z: 0}
+  - {x: 0.36741978, y: 0.10360861, z: 0}
+  - {x: 0.2612355, y: -0.2524805, z: 0}
+  - {x: 0.14016479, y: -0.45693016, z: 0}
+  - {x: 0.053525686, y: -0.69176817, z: 0}
+  - {x: 0.03328818, y: -0.7934165, z: 0}
+  - {x: -0.0021211505, y: -0.8704834, z: 0}
+  - {x: -0.030263305, y: -0.88791895, z: 0}
+  - {x: -0.04571438, y: -0.88956356, z: 0}
+  - {x: -0.13661027, y: -0.77715206, z: 0}
+  m_ShapePathHash: 1367088828
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -109766
