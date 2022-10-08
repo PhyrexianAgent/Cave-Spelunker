@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     private const float FALL_MULTIPLIER = 2.5f;
     private const float LOW_JUMP_MULTIPLIER = 2f;
     private const float JUMP_SIZE_MULT = 0.785f;
+    private const float SPRINT_SPEED_MULT = 2;
+    private const float SNEAK_SPEED_MULT = 0.5f;
 
     [SerializeField] private float speed;
     private float moveBy;
@@ -89,22 +91,25 @@ public class Player : MonoBehaviour
     void Move()
     {
         float x = Input.GetAxisRaw("Horizontal");
-
-        //Running
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
-        {
-            moveBy = x * speed * 2;
-        // Sneaking
-        }else if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.RightControl))
-        {
-            moveBy = x * speed * 0.5f;
-        }
-        else
-        {
-            moveBy = x * speed;
-        }
+        float speedMult = GetSpeedMult();
+        Debug.Log(speedMult);
+        moveBy = x * speed * speedMult;
         
         rb.velocity = new Vector2(moveBy, rb.velocity.y);
+    }
+
+    private float GetSpeedMult()
+    {
+        float speedMult = 1;
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+        {
+            speedMult = SPRINT_SPEED_MULT;
+        }
+        if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
+        {
+            speedMult = SNEAK_SPEED_MULT;
+        }
+        return speedMult;
     }
     void Jump()
     {
