@@ -78,7 +78,7 @@ public class Player : MonoBehaviour
 
     private void RotateFlashlight()
     {
-        Debug.Log(Camera.main == null);
+        //Debug.Log(Camera.main == null);
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         float angleBetweenPoints = GetAngleBetweenPoints(mousePos, flashlight.transform.position);
         flashlight.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angleBetweenPoints - 90));
