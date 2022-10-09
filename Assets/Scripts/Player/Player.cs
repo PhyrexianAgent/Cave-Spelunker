@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float walkSoundSize = 3;
     [SerializeField] private float walkSoundDamage = 10;
     [SerializeField] private float jumpSoundDamage = 10;
+    [SerializeField] private float climbSpeed = 7;
     private bool isGrounded = true;
 
     [SerializeField] private float jumpSpeed;

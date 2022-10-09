@@ -8,6 +8,7 @@ TagManager:
   - Sound
   - Stalactite
   - Kill Zone
+  - End Level Zone
   layers:
   - Default
   - TransparentFX
