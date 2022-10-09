@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
     }
     void Start()
     {
+        //PlayerDeathMenuController.instance.PlayerDied();
         //playerSounds = this.GetComponent<AudioSource>();
     }
 
@@ -140,5 +141,13 @@ public class Player : MonoBehaviour
     public bool getIsGrounded()
     { // Used for animation purposes
         return isGrounded;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Kill Zone")
+        {
+            Debug.Log("working");
+        }
     }
 }
