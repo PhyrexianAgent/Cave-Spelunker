@@ -41,6 +41,7 @@ public class PlayerAnimation : MonoBehaviour
         anim.SetFloat("xVelocity", Mathf.Abs(rigidBody.velocity.x));
         anim.SetFloat("yVelocity", rigidBody.velocity.y);
         anim.SetBool("isGround", Player.instance.getIsGrounded());
+        anim.SetFloat("speed", Mathf.Abs(Player.instance.getMoveBy()));
 
         MovementDetects();
         TestWalk();
