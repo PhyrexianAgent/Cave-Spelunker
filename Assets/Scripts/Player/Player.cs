@@ -93,6 +93,7 @@ public class Player : MonoBehaviour
     {
         float x = Input.GetAxisRaw("Horizontal");
         float speedMult = GetSpeedMult();
+        Debug.Log(speedMult);
         moveBy = x * speed * speedMult;
         
         rb.velocity = new Vector2(moveBy, rb.velocity.y);
@@ -141,10 +142,7 @@ public class Player : MonoBehaviour
     { // Used for animation purposes
         return isGrounded;
     }
-    public float getMoveBy()
-    {
-        return moveBy;
-    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Stalactite" && collision.gameObject.GetComponent<StalactiteBehaviour>().GetIsFalling())
