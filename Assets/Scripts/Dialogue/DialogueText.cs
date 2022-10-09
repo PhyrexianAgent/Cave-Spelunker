@@ -7,6 +7,7 @@ public class DialogueText : MonoBehaviour
 
     [SerializeField]
     private bool destroyAfterPlay = false;
+    [TextArea(15, 20)]
     public string message;
     [SerializeField]
     public bool lockPosition = false;
@@ -16,5 +17,13 @@ public class DialogueText : MonoBehaviour
     public bool isDestroyable()
     {
         return destroyAfterPlay;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (destroyAfterPlay)
+        {
+            Destroy(gameObject);
+        }
     }
 }
