@@ -49,7 +49,7 @@ public class PlayerAnimation : MonoBehaviour
 
     private void TestWalk()
     {
-        if (anim.GetFloat("xVelocity") > 0.01f && anim.GetFloat("yVelocity") != 0)
+        if (anim.GetFloat("xVelocity") > 0.01f && anim.GetFloat("yVelocity") != 0 && ! Player.instance.IsCrouching())
         {
             walkTime -= Time.deltaTime;
             if (walkTime <= 0)
