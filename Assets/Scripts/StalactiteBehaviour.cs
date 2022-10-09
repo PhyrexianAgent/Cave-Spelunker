@@ -44,4 +44,9 @@ public class StalactiteBehaviour : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public bool GetIsFalling()
+    {
+        return isFalling;
+    }
 }

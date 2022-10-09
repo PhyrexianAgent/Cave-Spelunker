@@ -145,9 +145,10 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Kill Zone")
+        if (collision.gameObject.tag == "Stalactite" && collision.gameObject.GetComponent<StalactiteBehaviour>().GetIsFalling())
         {
-            Debug.Log("working");
+            CameraFollow.instance.followPlayer = false;
+            PlayerDeathMenuController.instance.PlayerDied();
         }
     }
 }
