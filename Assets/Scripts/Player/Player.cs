@@ -112,6 +112,10 @@ public class Player : MonoBehaviour
         }
         return speedMult;
     }
+    public bool IsCrouching()
+    {
+        return Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
+    }
     void Jump()
     {
         if ((Input.GetKeyDown("up") || Input.GetKeyDown("w")) && isGrounded)
