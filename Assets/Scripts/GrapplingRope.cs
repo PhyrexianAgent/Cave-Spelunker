@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GrapplingRope : MonoBehaviour
 {
+    private const float AMOUNT_PADDING = 1;
+
     [Header("General Refernces:")]
     public GrapplingGun grapplingGun;
     public LineRenderer m_lineRenderer;
@@ -26,6 +29,8 @@ public class GrapplingRope : MonoBehaviour
     [HideInInspector] public bool isGrappling = true;
 
     bool strightLine = true;
+    bool drawing = false;
+    Vector3 oldPos;
 
     private void OnEnable()
     {
@@ -33,7 +38,8 @@ public class GrapplingRope : MonoBehaviour
         m_lineRenderer.positionCount = percision;
         waveSize = StartWaveSize;
         strightLine = false;
-
+        drawing = true;
+        oldPos = m_lineRenderer.GetPosition(percision - 1);
         LinePointsToFirePoint();
 
         m_lineRenderer.enabled = true;
@@ -59,21 +65,39 @@ public class GrapplingRope : MonoBehaviour
         DrawRope();
     }
 
+    private bool RopeCloseEnough(float notPrecise, float desired)
+    {
+        return notPrecise <= desired + AMOUNT_PADDING && desired - AMOUNT_PADDING <= notPrecise;
+    }
+
     void DrawRope()
     {
+        Vector3 newPos;
         if (!strightLine)
         {
-            if (m_lineRenderer.GetPosition(percision - 1).x == grapplingGun.grapplePoint.x)
+            newPos = m_lineRenderer.GetPosition(percision - 1); // redid this area becuase old if statement always false (points never met up). Now check for when points no longer change.
+            if (newPos == oldPos)
             {
                 strightLine = true;
             }
             else
             {
+                oldPos = newPos;
                 DrawRopeWaves();
             }
+            /*if (m_lineRenderer.GetPosition(percision - 1).x == grapplingGun.grapplePoint.x)
+            {
+                strightLine = true;
+                Debug.Log("entered here");
+            }
+            else
+            {
+                DrawRopeWaves();
+            }*/
         }
         else
         {
+            
             if (!isGrappling)
             {
                 grapplingGun.Grapple();

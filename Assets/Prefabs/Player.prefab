@@ -260,7 +260,7 @@ SpringJoint2D:
   m_GameObject: {fileID: 1655382623063545569}
   m_Enabled: 1
   serializedVersion: 4
-  m_EnableCollision: 1
+  m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 0}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -692,8 +692,8 @@ MonoBehaviour:
   rotationSpeed: 4
   hasMaxDistance: 0
   maxDistnace: 20
-  launchToPoint: 0
-  launchType: 1
+  launchToPoint: 1
+  launchType: 0
   launchSpeed: 4
   autoConfigureDistance: 0
   targetDistance: 3

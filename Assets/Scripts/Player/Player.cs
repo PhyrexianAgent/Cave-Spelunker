@@ -73,7 +73,7 @@ public class Player : MonoBehaviour
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, MAX_GROUND_TEST_DIST, groundLayerMask);
         if (!oldGrounded && isGrounded)
         {
-            Debug.Log(GetComponent<Rigidbody2D>().velocity.y * JUMP_SIZE_MULT);
+            //Debug.Log(GetComponent<Rigidbody2D>().velocity.y * JUMP_SIZE_MULT);
             GenerateSound(jumpSoundDamage, Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y * JUMP_SIZE_MULT)); // done this way to make sure jumping up to ledges makes a smaller sound then landing from height
         }
     }
@@ -97,7 +97,7 @@ public class Player : MonoBehaviour
         Debug.Log(speedMult);
         moveBy = x * speed * speedMult;
         rb.velocity = new Vector2(moveBy, rb.velocity.y);
-        Debug.Log(rb.gravityScale);
+        //Debug.Log(rb.gravityScale);
     }
 
     private float GetSpeedMult()
