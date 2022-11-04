@@ -260,15 +260,15 @@ SpringJoint2D:
   m_GameObject: {fileID: 1655382623063545569}
   m_Enabled: 1
   serializedVersion: 4
-  m_EnableCollision: 0
+  m_EnableCollision: 1
   m_ConnectedRigidBody: {fileID: 0}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 0, y: 0}
+  m_Anchor: {x: 1, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 3.979598
+  m_Distance: 3.058954
   m_DampingRatio: 1
   m_Frequency: 1
 --- !u!1 &2235243068002228718
@@ -688,7 +688,7 @@ MonoBehaviour:
   firePoint: {fileID: 6058601987112410311}
   m_springJoint2D: {fileID: 4765603025442615668}
   m_rigidbody: {fileID: 1655382623063545581}
-  rotateOverTime: 1
+  rotateOverTime: 0
   rotationSpeed: 4
   hasMaxDistance: 0
   maxDistnace: 20

@@ -96,8 +96,8 @@ public class Player : MonoBehaviour
         float speedMult = GetSpeedMult();
         Debug.Log(speedMult);
         moveBy = x * speed * speedMult;
-        
         rb.velocity = new Vector2(moveBy, rb.velocity.y);
+        Debug.Log(rb.gravityScale);
     }
 
     private float GetSpeedMult()
