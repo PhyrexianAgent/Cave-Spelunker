@@ -679,6 +679,9 @@ MonoBehaviour:
   grappleRope: {fileID: 1982675815050198084}
   grappleToAll: 0
   grappableLayerNumber: 3
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
   m_camera: {fileID: 0}
   gunHolder: {fileID: 1655382623063545583}
   gunPivot: {fileID: 5517498009786279333}
