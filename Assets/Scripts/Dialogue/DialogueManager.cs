@@ -33,6 +33,7 @@ public class DialogueManager : MonoBehaviour
         text.text = "";
         text.gameObject.SetActive(visible);
         backdrop.gameObject.SetActive(visible);
+        Debug.Log("killing dialog");
     }
 
     IEnumerator DisplayText(string info)

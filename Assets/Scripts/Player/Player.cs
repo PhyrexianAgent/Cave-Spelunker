@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float walkSoundDamage = 10;
     [SerializeField] private float jumpSoundDamage = 10;
     [SerializeField] private float climbSpeed = 7;
+    [SerializeField] private float grappleDescendSpeed = 3;
     [SerializeField] private GrapplingGun grapplingGun;
     private bool isGrounded = true;
 
@@ -51,7 +52,7 @@ public class Player : MonoBehaviour
     {
         if (currentState == PlayerStates.Grappled && grappleGun.GetIsGrappling() && state != currentState)
         {
-            Debug.Log("disabling grapple");
+            //Debug.Log("disabling grapple");
             grappleGun.DisableGrapple();
         }
         currentState = state;
@@ -73,7 +74,7 @@ public class Player : MonoBehaviour
 
     private void DoStateActions()
     {
-        Debug.Log(currentState);
+        //Debug.Log(currentState);
         switch (currentState)
         {
             case PlayerStates.Normal:
@@ -92,7 +93,19 @@ public class Player : MonoBehaviour
     private void MoveInGrapple()
     {
         grappleGun.GoUp(Input.GetKey(KeyCode.W));
-        grappleGun.GoDown(Input.GetKey(KeyCode.S));
+        if (Input.GetKey(KeyCode.S))
+            DescendGrapple();
+        else
+        {
+            rb.velocity = Vector2.zero;
+            //Debug.Log("not going down");
+        }
+    }
+
+    private void DescendGrapple()
+    {
+        rb.velocity = new Vector2(0, -grappleDescendSpeed * Time.deltaTime * 100);
+        //Debug.Log(rb.velocity);
     }
 
     private void MoveNormally()
@@ -127,7 +140,7 @@ public class Player : MonoBehaviour
     {
         float x = Input.GetAxisRaw("Horizontal");
         float speedMult = GetSpeedMult();
-        Debug.Log(speedMult);
+        //Debug.Log(speedMult);
         moveBy = x * speed * speedMult;
         rb.velocity = new Vector2(moveBy, rb.velocity.y);
     }

@@ -76,8 +76,9 @@ public class GrapplingRope : MonoBehaviour
             if (newPos == oldPos)
             {
                 strightLine = true;
-                Debug.Log("getting here");
+                //Debug.Log("getting here");
                 Player.instance.SetPlayerGrapple(true);
+                //grapplingGun.m_rigidbody.velocity = Vector2.zero;
             }
             else
             {

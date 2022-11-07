@@ -14,8 +14,7 @@ public class PlayerDialogueDetector : MonoBehaviour
             {
                 DialogueManager.instance.SetVisible(collision.gameObject);
                 timer = collision.gameObject.GetComponent<DialogueText>().playTime;
-                dialogEnded = timer > 0;
-                //Player.instance.positionLocked = collision.gameObject.GetComponent<DialogueText>().lockPosition;
+                dialogEnded = collision.gameObject.GetComponent<DialogueText>().playTime <= 0;
                 Player.instance.ChangePlayerDialogLock(collision.gameObject.GetComponent<DialogueText>().lockPosition);
             }
         }
@@ -27,7 +26,7 @@ public class PlayerDialogueDetector : MonoBehaviour
             timer -= Time.deltaTime;
             if (timer <= 0)
             {
-                Debug.Log("disabling from dialog");
+                
                 Player.instance.ChangePlayerDialogLock(false);
                 //Player.instance.positionLocked = false;
                 DialogueManager.instance.SetInvisible();

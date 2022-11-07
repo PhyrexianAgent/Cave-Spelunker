@@ -76,14 +76,13 @@ public class GrapplingGun : MonoBehaviour
                 Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
                 RotateGun(mousePos, true);
             }
-            if ((launchToPoint || launchFromPoint) && grappleRope.isGrappling)
+            if (launchToPoint && grappleRope.isGrappling)
             {
                 if (launchType == LaunchType.Transform_Launch)
                 {
-                    Vector2 firePointDistnace = firePoint.position - (launchToPoint ? gunHolder.localPosition : new Vector2(gunHolder.localPosition.x, -gunHolder.localPosition.y));
+                    Vector2 firePointDistnace = firePoint.position - gunHolder.localPosition;
                     Vector2 targetPos = grapplePoint - firePointDistnace;
                     gunHolder.position = Vector2.Lerp(gunHolder.position, targetPos, Time.deltaTime * launchSpeed);
-                    
                 }
             }
         }
@@ -198,7 +197,7 @@ public class GrapplingGun : MonoBehaviour
                     break;
                 case LaunchType.Transform_Launch:
                     m_rigidbody.gravityScale = 0;
-                    m_rigidbody.velocity = Vector2.zero;
+                    //m_rigidbody.velocity = Vector2.zero;
                     break;
             }
         }
