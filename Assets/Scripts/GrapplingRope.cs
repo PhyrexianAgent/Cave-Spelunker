@@ -49,6 +49,8 @@ public class GrapplingRope : MonoBehaviour
     {
         m_lineRenderer.enabled = false;
         isGrappling = false;
+        Player.instance.SetPlayerGrapple(false);
+        oldPos = Vector3.zero;
     }
 
     private void LinePointsToFirePoint()
@@ -65,11 +67,6 @@ public class GrapplingRope : MonoBehaviour
         DrawRope();
     }
 
-    private bool RopeCloseEnough(float notPrecise, float desired)
-    {
-        return notPrecise <= desired + AMOUNT_PADDING && desired - AMOUNT_PADDING <= notPrecise;
-    }
-
     void DrawRope()
     {
         Vector3 newPos;
@@ -79,6 +76,8 @@ public class GrapplingRope : MonoBehaviour
             if (newPos == oldPos)
             {
                 strightLine = true;
+                Debug.Log("getting here");
+                Player.instance.SetPlayerGrapple(true);
             }
             else
             {

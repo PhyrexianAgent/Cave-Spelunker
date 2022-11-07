@@ -51,11 +51,12 @@ public class GrapplingGun : MonoBehaviour
     [HideInInspector] public Vector2 grapplePoint;
     [HideInInspector] public Vector2 grappleDistanceVector;
 
+    private bool launchFromPoint = false;
+
     private void Start()
     {
         grappleRope.enabled = false;
         m_springJoint2D.enabled = false;
-
     }
 
     private void Update()
@@ -75,11 +76,11 @@ public class GrapplingGun : MonoBehaviour
                 Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
                 RotateGun(mousePos, true);
             }
-            if (launchToPoint && grappleRope.isGrappling)
+            if ((launchToPoint || launchFromPoint) && grappleRope.isGrappling)
             {
                 if (launchType == LaunchType.Transform_Launch)
                 {
-                    Vector2 firePointDistnace = firePoint.position - gunHolder.localPosition;
+                    Vector2 firePointDistnace = firePoint.position - (launchToPoint ? gunHolder.localPosition : new Vector2(gunHolder.localPosition.x, -gunHolder.localPosition.y));
                     Vector2 targetPos = grapplePoint - firePointDistnace;
                     gunHolder.position = Vector2.Lerp(gunHolder.position, targetPos, Time.deltaTime * launchSpeed);
                     
@@ -88,15 +89,45 @@ public class GrapplingGun : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-            grappleRope.enabled = false;
-            m_springJoint2D.enabled = false;
-            m_rigidbody.gravityScale = 3;
+            DisableGrapple();
         }
         else
         {
             Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
             RotateGun(mousePos, true);
         }
+    }
+
+    public void GoUp(bool goUp)
+    {
+        launchToPoint = goUp;
+    }
+
+    public void GoDown(bool goDown)
+    {
+        launchFromPoint = goDown;
+    }
+
+    public void DisableGrapple()
+    {
+        grappleRope.enabled = false;
+        m_springJoint2D.enabled = false;
+        m_rigidbody.gravityScale = 3;
+    }
+
+    public bool GetIsGrappling()
+    {
+        return grappleRope.enabled;
+    }
+
+    void SetLaunchToPoint(bool launchToPoint)
+    {
+        this.launchToPoint = launchToPoint;
+    }
+
+    void SetLaunchFromPoint(bool launchFromPoint)
+    {
+        this.launchFromPoint = launchFromPoint;
     }
 
     void RotateGun(Vector3 lookPoint, bool allowRotationOverTime)
