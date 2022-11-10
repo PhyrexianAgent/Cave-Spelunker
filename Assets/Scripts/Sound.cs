@@ -12,7 +12,7 @@ public class Sound : MonoBehaviour
         this.damage = damage;
         coll.radius = radius;
         coll.enabled = true;
-        //Destroy(gameObject, 0.5f);
+        Destroy(gameObject, 0.5f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -31,6 +31,10 @@ public class Sound : MonoBehaviour
             case "Spider Listener":
                 if (!obj.GetComponent<SpiderSoundDetect>().controller.CompareState(SpiderController.SpiderState.Dropping))
                     obj.GetComponent<SpiderSoundDetect>().controller.BeginDescent();
+                break;
+            case "Bat Listener":
+                if (obj.GetComponent<BatListenerController>().Awakenable())
+                    obj.GetComponent<BatListenerController>().AwakenBat();
                 break;
         }
     }

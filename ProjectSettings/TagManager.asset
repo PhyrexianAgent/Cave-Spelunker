@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - Spider
   - Spider Listener
+  - Bat Listener
   layers:
   - Default
   - TransparentFX

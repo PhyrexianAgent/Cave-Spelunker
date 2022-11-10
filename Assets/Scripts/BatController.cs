@@ -25,11 +25,6 @@ public class BatController : MonoBehaviour
         {
 
         }
-
-        if (Input.GetKeyDown(KeyCode.T) && currentState != BatStates.FlyStart && currentState != BatStates.Chase)
-        {
-            SetState(BatStates.FlyStart);
-        }
     }
 
     private void FixedUpdate()
@@ -45,6 +40,11 @@ public class BatController : MonoBehaviour
         Vector3 playerPos = Player.instance.transform.position;
         Vector3 diffNorm = (playerPos - transform.position).normalized;
         rigid.velocity = diffNorm * followSpeed;
+    }
+
+    public bool CompareState(BatStates state)
+    {
+        return currentState == state;
     }
 
     public void SetState(BatStates state)
