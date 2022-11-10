@@ -200,11 +200,22 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Stalactite" && collision.gameObject.GetComponent<StalactiteBehaviour>().GetIsFalling())
+        switch (collision.gameObject.tag) 
         {
-            CameraFollow.instance.followPlayer = false;
-            PlayerDeathMenuController.instance.PlayerDied();
+            case "Stalactite":
+                if (collision.gameObject.GetComponent<StalactiteBehaviour>().GetIsFalling())
+                    Die();
+                break;
+            case "Enemy":
+                Die();
+                break;
         }
+    }
+
+    private void Die()
+    {
+        CameraFollow.instance.followPlayer = false;
+        PlayerDeathMenuController.instance.PlayerDied();
     }
 
     public void ChangePlayerDialogLock(bool isLocked)

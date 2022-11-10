@@ -9,6 +9,7 @@ TagManager:
   - Stalactite
   - Kill Zone
   - End Level Zone
+  - Enemy
   layers:
   - Default
   - TransparentFX

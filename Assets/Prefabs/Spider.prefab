@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4309372278516511796}
   m_Layer: 0
   m_Name: Spider
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,8 +105,11 @@ MonoBehaviour:
   attackArea: {fileID: 275195096147229730}
   soundArea: {fileID: 5430707286045891296}
   lineRender: {fileID: 4309372278516511796}
+  rigid: {fileID: 8138707409144571358}
   roofYPos: 0
   localEndPos: {x: -0.08, y: -1.1}
+  fallGravityScale: 8
+  returnSpeed: 4
 --- !u!70 &9027942059420069021
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -120,8 +123,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.09094244, y: -1.8253417}
-  m_Size: {x: 1.1240054, y: 1.6826496}
+  m_Offset: {x: -0.09094244, y: -2.0989096}
+  m_Size: {x: 1.1240054, y: 2.2297854}
   m_Direction: 0
 --- !u!50 &8138707409144571358
 Rigidbody2D:
@@ -286,7 +289,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.080780685, y: -2.8273268}
@@ -375,3 +378,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45133aac012fa7c42802cd07a4cdec1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 3919953270487218982}
