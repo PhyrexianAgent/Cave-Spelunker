@@ -8,6 +8,7 @@ public class BatController : MonoBehaviour
     public Rigidbody2D rigid;
     public BoxCollider2D coll;
     public Animator anim;
+    public BatAttackArea attackArea;
 
     [Header("Chase Vals")]
     [SerializeField] private float followSpeed = 5;
@@ -56,6 +57,7 @@ public class BatController : MonoBehaviour
         {
             case BatStates.FlyStart:
                 anim.SetBool("Awake", true);
+                attackArea.AbleToAttack();
                 //coll.enabled = true;
                 if (!groupController.IsAwakening())
                     groupController.AwakenOthers();

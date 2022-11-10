@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float grappleDescendSpeed = 3;
     [SerializeField] private GrapplingGun grapplingGun;
     private bool isGrounded = true;
+    private bool isDead = false;
 
     private PlayerStates currentState = PlayerStates.Normal;
 
@@ -212,10 +213,15 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Die()
+    public void Die()
     {
-        CameraFollow.instance.followPlayer = false;
-        PlayerDeathMenuController.instance.PlayerDied();
+        if (!isDead)
+        {
+            isDead = true;
+            CameraFollow.instance.followPlayer = false;
+            PlayerDeathMenuController.instance.PlayerDied();
+        }
+        
     }
 
     public void ChangePlayerDialogLock(bool isLocked)
