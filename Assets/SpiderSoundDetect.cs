@@ -14,14 +14,6 @@ public class SpiderSoundDetect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            controller.BeginDescent();
-        }
     }
 
-    private void BeginDescent()
-    {
-
-    }
 }

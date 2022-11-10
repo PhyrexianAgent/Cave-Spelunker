@@ -52,6 +52,7 @@ public class SpiderController : MonoBehaviour
     {
         currentState = SpiderState.Dropping;
         rigid.gravityScale = fallGravityScale;
+        rigid.velocity = Vector2.zero;
     }
 
     public bool CompareState(SpiderState state)

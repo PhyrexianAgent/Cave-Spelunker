@@ -10,6 +10,8 @@ TagManager:
   - Kill Zone
   - End Level Zone
   - Enemy
+  - Spider
+  - Spider Listener
   layers:
   - Default
   - TransparentFX

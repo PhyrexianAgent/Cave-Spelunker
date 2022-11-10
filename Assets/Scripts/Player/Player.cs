@@ -206,7 +206,7 @@ public class Player : MonoBehaviour
                 if (collision.gameObject.GetComponent<StalactiteBehaviour>().GetIsFalling())
                     Die();
                 break;
-            case "Enemy":
+            case "Spider":
                 Die();
                 break;
         }
