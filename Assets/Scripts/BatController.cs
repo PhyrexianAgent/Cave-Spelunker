@@ -12,6 +12,9 @@ public class BatController : MonoBehaviour
     [Header("Chase Vals")]
     [SerializeField] private float followSpeed = 5;
 
+    [Header("Other Vars")]
+    public BatGroupController groupController;
+
     private BatStates currentState = BatStates.Sleep;
     void Start()
     {
@@ -53,7 +56,9 @@ public class BatController : MonoBehaviour
         {
             case BatStates.FlyStart:
                 anim.SetBool("Awake", true);
-                coll.enabled = true;
+                //coll.enabled = true;
+                if (!groupController.IsAwakening())
+                    groupController.AwakenOthers();
                 break;
         }
         currentState = state;

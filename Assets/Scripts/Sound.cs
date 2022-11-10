@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Sound : MonoBehaviour
 {
+    private bool isQuietSound;
+
     private float damage = 0;
 
-    public void GenerateSound(float damage, float radius)
+    public void GenerateSound(float damage, float radius, bool isQuietSound = false)
     {
         CircleCollider2D coll = GetComponent<CircleCollider2D>();
         this.damage = damage;
+        this.isQuietSound = isQuietSound;
         coll.radius = radius;
         coll.enabled = true;
         Destroy(gameObject, 0.5f);
