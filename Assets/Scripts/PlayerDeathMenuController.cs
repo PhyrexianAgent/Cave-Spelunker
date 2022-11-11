@@ -38,7 +38,7 @@ public class PlayerDeathMenuController : MonoBehaviour
     public void PlayerDied()
     {
         anim.Play();
-        SceneManager.LoadScene(scene.name);
+        //SceneManager.LoadScene(scene.name);
     }
 
     public void PlayerWon()
