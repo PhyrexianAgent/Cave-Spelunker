@@ -90,6 +90,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    public Vector3 GetCurrentVelocity()
+    {
+        return rb.velocity;
+    }
+
     private void MoveInGrapple()
     {
         grappleGun.GoUp(Input.GetKey(KeyCode.W));
