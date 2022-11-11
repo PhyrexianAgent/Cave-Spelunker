@@ -46,6 +46,28 @@ public class BatController : MonoBehaviour
         rigid.velocity = diffNorm * followSpeed;
     }
 
+    public void HeardquietSound()
+    {
+        if (currentState == BatStates.Wakening)
+        {
+            SetState(BatStates.FlyStart);
+        }
+        else
+        {
+            Debug.Log("entere dhereer");
+            SetState(BatStates.Wakening);
+            Invoke("ReturnToSleep", Random.Range(3, 6));
+        }
+    }
+
+    private void ReturnToSleep()
+    {
+        if (currentState == BatStates.Wakening)
+        {
+            SetState(BatStates.Sleep);
+        }
+    }
+
     public bool CompareState(BatStates state)
     {
         return currentState == state;
@@ -58,9 +80,14 @@ public class BatController : MonoBehaviour
             case BatStates.FlyStart:
                 anim.SetBool("Awake", true);
                 attackArea.AbleToAttack();
-                //coll.enabled = true;
                 if (!groupController.IsAwakening())
                     groupController.AwakenOthers();
+                break;
+            case BatStates.Wakening:
+                anim.SetBool("Wakening", true);
+                break;
+            case BatStates.Sleep:
+                anim.SetBool("Wakening", false);
                 break;
         }
         currentState = state;

@@ -64,13 +64,12 @@ public class Player : MonoBehaviour
     {
         Move();
         DoStateActions();
-        MoveNormally();
         TestForGrounded();
         RotateFlashlight();
-        if (Input.GetKeyDown(KeyCode.J))
+        /*if (Input.GetKeyDown(KeyCode.J))
         {
             GenerateSound(walkSoundDamage, walkSoundSize);
-        }
+        }*/
     }
 
     private void DoStateActions()
@@ -109,19 +108,13 @@ public class Player : MonoBehaviour
         //Debug.Log(rb.velocity);
     }
 
-    private void MoveNormally()
-    {
-        Move();
-        
-    }
-
     private void TestForGrounded()
     {
         bool oldGrounded = isGrounded;
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, MAX_GROUND_TEST_DIST, groundLayerMask);
         if (!oldGrounded && isGrounded)
         {
-            GenerateSound(jumpSoundDamage, Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y * JUMP_SIZE_MULT)); // done this way to make sure jumping up to ledges makes a smaller sound then landing from height
+            GenerateSound(jumpSoundDamage, Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y * JUMP_SIZE_MULT), false); // done this way to make sure jumping up to ledges makes a smaller sound then landing from height
         }
     }
 
@@ -159,7 +152,7 @@ public class Player : MonoBehaviour
         }
         return speedMult;
     }
-    public bool IsCrouching()
+    public bool IsSneaking()
     {
         return Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
     }
@@ -183,7 +176,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void GenerateSound(float damage, float size)
+    private void GenerateSound(float damage, float size, bool isQuiet)
     {
         GameObject soundMade = Instantiate(soundPrefab, transform.position, Quaternion.identity);
         soundMade.GetComponent<Sound>().GenerateSound(damage, size);
