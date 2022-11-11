@@ -10,7 +10,7 @@ public class PlayerDeathMenuController : MonoBehaviour
 
     public static PlayerDeathMenuController instance;
 
-    [SerializeField] private string currentLevelName = "Level 1";
+    Scene scene;
 
     public Animation anim;
     public TextMeshProUGUI text;
@@ -20,6 +20,7 @@ public class PlayerDeathMenuController : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        scene = SceneManager.GetActiveScene();
     }
 
     private void Update()
@@ -37,6 +38,7 @@ public class PlayerDeathMenuController : MonoBehaviour
     public void PlayerDied()
     {
         anim.Play();
+        SceneManager.LoadScene(scene.name);
     }
 
     public void PlayerWon()
@@ -47,7 +49,7 @@ public class PlayerDeathMenuController : MonoBehaviour
 
     public void RestartLevel()
     {
-        SceneManager.LoadScene(currentLevelName);
+        SceneManager.LoadScene(scene.name);
     }
 
     public void ReturnToMenu()
