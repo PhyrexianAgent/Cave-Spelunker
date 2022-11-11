@@ -54,7 +54,6 @@ public class BatController : MonoBehaviour
         }
         else
         {
-            Debug.Log("entere dhereer");
             SetState(BatStates.Wakening);
             Invoke("ReturnToSleep", Random.Range(3, 6));
         }
@@ -79,7 +78,7 @@ public class BatController : MonoBehaviour
         {
             case BatStates.FlyStart:
                 anim.SetBool("Awake", true);
-                attackArea.AbleToAttack();
+                
                 if (!groupController.IsAwakening())
                     groupController.AwakenOthers();
                 break;
@@ -88,6 +87,9 @@ public class BatController : MonoBehaviour
                 break;
             case BatStates.Sleep:
                 anim.SetBool("Wakening", false);
+                break;
+            case BatStates.Chase:
+                attackArea.AbleToAttack();
                 break;
         }
         currentState = state;

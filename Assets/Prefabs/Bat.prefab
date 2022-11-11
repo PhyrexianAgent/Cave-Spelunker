@@ -140,7 +140,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1100442596, guid: 1ac6208238ff04346abffa188f06cb93, type: 3}
+  m_Sprite: {fileID: 1620749049, guid: d8a4b7d07cc35504e82bc933b18032c3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   coll: {fileID: 1881948420033214389}
   anim: {fileID: 1881948420033214385}
   attackArea: {fileID: 3149429236407219371}
-  followSpeed: 10
+  followSpeed: 25
   groupController: {fileID: 0}
 --- !u!61 &1881948420033214389
 BoxCollider2D:
