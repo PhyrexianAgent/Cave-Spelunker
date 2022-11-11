@@ -55,6 +55,7 @@ public class PlayerAnimation : MonoBehaviour
             if (walkTime <= 0)
             {
                 walkTime = MAX_WALK_TIME;
+                AudioManager.instance.Play("Walk");
                 CreateSound(Player.instance.IsSneaking());
             }
         }
