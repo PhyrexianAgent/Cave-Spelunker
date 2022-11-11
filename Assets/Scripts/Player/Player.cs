@@ -62,14 +62,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
         DoStateActions();
         TestForGrounded();
+        Move();
         RotateFlashlight();
-        /*if (Input.GetKeyDown(KeyCode.J))
-        {
-            GenerateSound(walkSoundDamage, walkSoundSize);
-        }*/
     }
 
     private void DoStateActions()
