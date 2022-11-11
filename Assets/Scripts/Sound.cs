@@ -20,29 +20,12 @@ public class Sound : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!isQuietSound)
-        {
-            DoTriggerActions(collision.tag, collision.gameObject);
-        }
-        else
-        {
-            DoQuietActions(collision.tag, collision.gameObject);
-        }
-        
-    }
-
-    private void DoQuietActions(string tag, GameObject obj)
-    {
-        switch (tag)
-        {
-            case "Bat Listener":
-                obj.GetComponent<BatListenerController>().owner.HeardquietSound();
-                break;
-        }
+        DoTriggerActions(collision.tag, collision.gameObject);
     }
 
     private void DoTriggerActions(string tag, GameObject obj)
     {
+        Debug.Log(tag);
         switch (tag)
         {
             case "Stalactite":

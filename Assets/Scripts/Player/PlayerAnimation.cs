@@ -49,13 +49,13 @@ public class PlayerAnimation : MonoBehaviour
 
     private void TestWalk()
     {
-        if (anim.GetFloat("xVelocity") > 0.01f && anim.GetFloat("yVelocity") != 0)
+        if (anim.GetFloat("xVelocity") > 0.01f && anim.GetFloat("yVelocity") != 0 && ! Player.instance.IsCrouching())
         {
             walkTime -= Time.deltaTime;
             if (walkTime <= 0)
             {
                 walkTime = MAX_WALK_TIME;
-                CreateSound(Player.instance.IsSneaking());
+                CreateSound();
             }
         }
         else if (walkTime != MAX_WALK_TIME)
@@ -82,9 +82,9 @@ public class PlayerAnimation : MonoBehaviour
         }
     }
 
-    private void CreateSound(bool isQuiet) // will change a bit when running is added to have running make a louder noise
+    private void CreateSound() // will change a bit when running is added to have running make a louder noise
     {
         GameObject newSound = Instantiate(soundPrefab, transform.position, Quaternion.identity);
-        newSound.GetComponent<Sound>().GenerateSound(walkSoundDamage, walkSoundSize, isQuiet);
+        newSound.GetComponent<Sound>().GenerateSound(walkSoundDamage, walkSoundSize);
     }
 }
