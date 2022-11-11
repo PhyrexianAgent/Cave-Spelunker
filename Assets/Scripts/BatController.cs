@@ -78,7 +78,6 @@ public class BatController : MonoBehaviour
         {
             case BatStates.FlyStart:
                 anim.SetBool("Awake", true);
-                
                 if (!groupController.IsAwakening())
                     groupController.AwakenOthers();
                 break;

@@ -134,7 +134,7 @@ SpringJoint2D:
   m_Anchor: {x: 1, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 69.858215
+  m_Distance: 2.9154758
   m_DampingRatio: 1
   m_Frequency: 1
 --- !u!1 &2235243068002228718
@@ -442,8 +442,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.3301319
-      value: 0.38817155
+      time: 0.25658453
+      value: 0.11000383
       inSlope: 1.3653736
       outSlope: 1.3653736
       tangentMode: 0
@@ -451,8 +451,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.77347887
-      value: 0.7455269
+      time: 0.5132305
+      value: -0.16322514
       inSlope: 2.4291496
       outSlope: 2.4291496
       tangentMode: 0
@@ -460,8 +460,17 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
+      time: 0.6330581
+      value: 0.08507447
+      inSlope: 0.68318725
+      outSlope: 0.68318725
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 1
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -561,7 +570,7 @@ MonoBehaviour:
   maxDistnace: 20
   launchToPoint: 0
   launchType: 0
-  launchSpeed: 4
+  launchSpeed: 1
   autoConfigureDistance: 1
   targetDistance: 3
   targetFrequncy: 1
