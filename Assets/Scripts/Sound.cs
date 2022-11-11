@@ -15,7 +15,7 @@ public class Sound : MonoBehaviour
         this.isQuietSound = isQuietSound;
         coll.radius = radius;
         coll.enabled = true;
-        Destroy(gameObject, 0.5f);
+        //Destroy(gameObject, 0.5f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

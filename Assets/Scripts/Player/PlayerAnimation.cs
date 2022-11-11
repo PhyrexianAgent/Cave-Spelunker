@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    private const float MAX_WALK_TIME = 0.5f;
+    private const float MAX_WALK_TIME = 0.6f;
+    private const float WALK_START_REMOVE = 0.1f;
+    private const float MAX_WALK_RESET_TIME = 1;
 
     [SerializeField]
     private Rigidbody2D rigidBody;
@@ -19,6 +21,8 @@ public class PlayerAnimation : MonoBehaviour
     public GameObject soundPrefab;
 
     private float walkTime = MAX_WALK_TIME;
+    private float walkResetTime = MAX_WALK_RESET_TIME;
+    private bool shimmied = false;
 
     void Start()
     {
@@ -43,25 +47,51 @@ public class PlayerAnimation : MonoBehaviour
         anim.SetBool("isGround", Player.instance.getIsGrounded());
         anim.SetFloat("speed", Mathf.Abs(Player.instance.getMoveBy()));
 
+        TestForWalkStart();
+
         MovementDetects();
         TestWalk();
     }
 
+    private void TestForWalkStart()
+    {
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+        {
+            
+            walkTime -= WALK_START_REMOVE;
+            CheckEndWalk();
+        }
+    }
+
+    private void CheckEndWalk()
+    {
+        if (walkTime <= 0)
+        {
+            walkTime = MAX_WALK_TIME;
+            CreateSound(Player.instance.IsSneaking());
+        }
+    }
+
     private void TestWalk()
     {
-        if (anim.GetFloat("xVelocity") > 0.01f && anim.GetFloat("yVelocity") != 0)
+        if (anim.GetFloat("xVelocity") > 0.4f && anim.GetFloat("yVelocity") != 0)
         {
             walkTime -= Time.deltaTime;
-            if (walkTime <= 0)
-            {
-                walkTime = MAX_WALK_TIME;
-                CreateSound(Player.instance.IsSneaking());
-            }
+            CheckEndWalk();
         }
         else if (walkTime != MAX_WALK_TIME)
         {
-            walkTime = MAX_WALK_TIME;
+            walkResetTime -= Time.deltaTime;
+            if (walkResetTime <= 0)
+            {
+                walkResetTime = MAX_WALK_RESET_TIME;
+                walkTime = MAX_WALK_TIME;
+            }
         }
+        /*else if (walkTime != MAX_WALK_TIME)
+        {
+            walkTime = MAX_WALK_TIME;
+        }*/
     }
 
     private void MovementDetects()

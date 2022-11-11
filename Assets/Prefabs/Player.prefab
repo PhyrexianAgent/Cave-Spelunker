@@ -134,7 +134,7 @@ SpringJoint2D:
   m_Anchor: {x: 1, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 1
+  m_Distance: 69.858215
   m_DampingRatio: 1
   m_Frequency: 1
 --- !u!1 &2235243068002228718
@@ -843,7 +843,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2223919102895304296}
   - component: {fileID: 8424423012066324493}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: FlashTrigger
   m_TagString: Light
   m_Icon: {fileID: 0}
