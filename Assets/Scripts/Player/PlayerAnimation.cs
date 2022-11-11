@@ -62,11 +62,16 @@ public class PlayerAnimation : MonoBehaviour
         }
     }
 
+    public void PlayWalk()
+    {
+        AudioManager.instance.Play("Walk");
+    }
+
     private void CheckEndWalk()
     {
         if (walkTime <= 0)
         {
-            AudioManager.instance.Play("Walk");
+            //AudioManager.instance.Play("Walk");
             walkTime = MAX_WALK_TIME;
             CreateSound(Player.instance.IsSneaking());
         }
