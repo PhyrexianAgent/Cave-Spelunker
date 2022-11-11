@@ -57,7 +57,6 @@ public class PlayerAnimation : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
         {
-            
             walkTime -= WALK_START_REMOVE;
             CheckEndWalk();
         }
@@ -67,6 +66,7 @@ public class PlayerAnimation : MonoBehaviour
     {
         if (walkTime <= 0)
         {
+            AudioManager.instance.Play("Walk");
             walkTime = MAX_WALK_TIME;
             CreateSound(Player.instance.IsSneaking());
         }
@@ -86,7 +86,6 @@ public class PlayerAnimation : MonoBehaviour
             {
                 walkResetTime = MAX_WALK_RESET_TIME;
                 walkTime = MAX_WALK_TIME;
-                AudioManager.instance.Play("Walk");
             }
         }
         /*else if (walkTime != MAX_WALK_TIME)
