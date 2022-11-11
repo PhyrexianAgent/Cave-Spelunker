@@ -298,3 +298,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 1881948420033214388}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 256

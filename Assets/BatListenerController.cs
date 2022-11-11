@@ -5,9 +5,11 @@ using UnityEngine;
 public class BatListenerController : MonoBehaviour
 {
     public BatController owner;
+
+    private LayerMask detectLayers;
     void Start()
     {
-        
+        detectLayers = LayerMask.GetMask("Player", "Ground", "Walls");
     }
 
     // Update is called once per frame
@@ -23,6 +25,21 @@ public class BatListenerController : MonoBehaviour
 
     public void AwakenBat()
     {
-        owner.SetState(BatStates.FlyStart);
+        if (PlayerSeeable())
+        {
+            owner.SetState(BatStates.FlyStart);
+        }
+        else
+        {
+            Debug.Log("player not visible");
+        }
+        
+    }
+
+    private bool PlayerSeeable()
+    {
+        RaycastHit2D hit = Physics2D.Linecast(transform.position, Player.instance.transform.position, detectLayers);
+        Debug.Log(hit.collider.gameObject.tag);
+        return hit.collider.gameObject.tag == "Player" ;
     }
 }
