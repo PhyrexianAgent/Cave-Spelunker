@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class SpecterController : MonoBehaviour
 {
-    [Header("Can Kill Player Vars")]
+    [Header("Kill Player Vars")]
     public bool canKillPlayer = false;
     public float stopRange = 10;
+    public Vector2 killOffset = new Vector2(0, 1);
 
     [Header("FollowingVars")]
     [SerializeField] private float followSpeed = 4;
@@ -18,10 +19,12 @@ public class SpecterController : MonoBehaviour
     public SpriteRenderer render;
     public Animator anim;
 
+    private Color invisColor;
+
     private SpecterState currentState = SpecterState.Hiding;
     void Start()
     {
-        
+        invisColor = new Color(render.color.r, render.color.g, render.color.b, 0);
     }
 
     // Update is called once per frame
@@ -53,8 +56,26 @@ public class SpecterController : MonoBehaviour
                 rigid.velocity = Vector2.zero;
                 anim.SetTrigger("Death");
                 break;
+            case SpecterState.Killing:
+                Player.instance.ChangePlayerDialogLock(true);
+                rigid.velocity = Vector2.zero;
+                render.enabled = false;
+                transform.position = Player.instance.transform.position + (Vector3)killOffset;
+                Invoke("StartKill", 0.8f);
+                break;
         }
         currentState = state;
+    }
+
+    private void StartKill()
+    {
+        render.enabled = true;
+        anim.SetTrigger("Killing");
+    }
+
+    public void KillingDone()
+    {
+        Player.instance.Die();
     }
 
     private void FollowPlayer()
@@ -71,9 +92,16 @@ public class SpecterController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Light")
-        { 
-            SetState(SpecterState.Hiding);
+        switch (collision.gameObject.tag) 
+        {
+            case "Light":
+                if (currentState != SpecterState.Killing)
+                    SetState(SpecterState.Hiding);
+                break;
+            case "Player":
+                if (currentState != SpecterState.Hiding)
+                    SetState(SpecterState.Killing);
+                break;
         }
     }
 
@@ -88,5 +116,6 @@ public class SpecterController : MonoBehaviour
 public enum SpecterState
 {
     Following,
-    Hiding
+    Hiding,
+    Killing
 }

@@ -1053,8 +1053,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.70910704, y: 0.066897154}
-  m_Size: {x: 1.1005673, y: 3.2412763}
+  m_Offset: {x: 0.72315747, y: 0.066896915}
+  m_Size: {x: 4.8942165, y: 4.8942165}
   m_Direction: 0
 --- !u!50 &847526211
 Rigidbody2D:
@@ -1089,8 +1089,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d97bfdf02f4f90b4889008f5c26b7304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canKillPlayer: 0
+  canKillPlayer: 1
   stopRange: 15
+  killOffset: {x: 0, y: 1}
   followSpeed: 10.6
   rigid: {fileID: 847526211}
   capsuleColl: {fileID: 847526210}
@@ -1157,7 +1158,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 847526209}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2239217, y: -1.7345611, z: 0}
+  m_LocalPosition: {x: -6.285174, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
