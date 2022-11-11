@@ -8747,6 +8747,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Cracked Floor
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 872
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed34e56e14de9394c8c863013b6e9e0f
+      internalID: 482457688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -8885,6 +8906,7 @@ TextureImporter:
       Terrain_and_Props_10: -1062837519
       Terrain_and_Props_302: 2136870866
       Terrain_and_Props_137: 1810956963
+      Cracked Floor: 482457688
       Terrain_and_Props_68: -1976849152
       Terrain_and_Props_29: -1350812150
       Terrain_and_Props_175: -1682093448
