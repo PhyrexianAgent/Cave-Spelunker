@@ -58,6 +58,7 @@ public class PlayerAnimation : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
         {
             walkTime -= WALK_START_REMOVE;
+            PlayWalk();
             CheckEndWalk();
         }
     }
