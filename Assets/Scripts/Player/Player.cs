@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     private bool isGrounded = true;
     private bool isDead = false;
     public bool encounteredBats = false;
+    public bool encounteredSpecter = true;
 
     private PlayerStates currentState = PlayerStates.Normal;
 
@@ -90,6 +91,7 @@ public class Player : MonoBehaviour
                 break;
             case PlayerStates.LockedInSpeaking:
                 rb.velocity = Vector2.zero;
+                rb.gravityScale = 0;
                 break;
         }
     }

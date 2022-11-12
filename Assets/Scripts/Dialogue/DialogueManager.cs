@@ -23,6 +23,7 @@ public class DialogueManager : MonoBehaviour
         this.visible = true;
         text.gameObject.SetActive(visible);
         backdrop.gameObject.SetActive(visible);
+        //Debug.Log();
         StartCoroutine(DisplayText(trigger.gameObject.GetComponent<DialogueText>().message));
     }
 

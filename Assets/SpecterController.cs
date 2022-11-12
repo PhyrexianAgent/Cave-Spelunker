@@ -18,6 +18,7 @@ public class SpecterController : MonoBehaviour
     public BoxCollider2D boxColl;
     public SpriteRenderer render;
     public Animator anim;
+    public DialogueText dialog;
 
     private Color invisColor;
 
@@ -55,6 +56,9 @@ public class SpecterController : MonoBehaviour
                 boxColl.enabled = true;
                 rigid.velocity = Vector2.zero;
                 anim.SetTrigger("Death");
+                if (!Player.instance.encounteredSpecter)
+                    StartCoroutine(PlayerDialogueDetector.instance.TriggerDialog(dialog));
+                Player.instance.encounteredSpecter = true;
                 break;
             case SpecterState.Killing:
                 Player.instance.ChangePlayerDialogLock(true);
@@ -95,7 +99,7 @@ public class SpecterController : MonoBehaviour
         switch (collision.gameObject.tag) 
         {
             case "Light":
-                if (currentState != SpecterState.Killing)
+                if (currentState != SpecterState.Killing && currentState != SpecterState.Hiding)
                     SetState(SpecterState.Hiding);
                 break;
             case "Player":

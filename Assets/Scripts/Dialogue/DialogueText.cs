@@ -16,17 +16,24 @@ public class DialogueText : MonoBehaviour
 
     public float timeToStart = 0;
 
+    public bool triggered = false;
+
     public bool isDestroyable()
     {
         return destroyAfterPlay;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("entered dialog");
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (destroyAfterPlay && timeToStart == 0)
-        {
+       // if (destroyAfterPlay && timeToStart == 0)
+        //{
             //Debug.Log(timeToStart);
-            Destroy(gameObject);
-        }
+          //  Destroy(gameObject);
+        //}
     }
 }

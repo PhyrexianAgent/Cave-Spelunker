@@ -9,6 +9,8 @@ public class PlayerDialogueDetector : MonoBehaviour
     bool dialogEnded = false;
     float timer;
 
+    private GameObject triggeredDialog;
+
     private void Awake()
     {
         instance = this;
@@ -21,7 +23,11 @@ public class PlayerDialogueDetector : MonoBehaviour
         {
             if(DialogueManager.instance.visible == false)
             {
-                StartCoroutine(TriggerDialog(collision.gameObject.GetComponent<DialogueText>()));
+                if (!collision.gameObject.GetComponent<DialogueText>().triggered || !collision.gameObject.GetComponent<DialogueText>().isDestroyable())
+                {
+                    StartCoroutine(TriggerDialog(collision.gameObject.GetComponent<DialogueText>()));
+                    collision.gameObject.GetComponent<DialogueText>().triggered = true;
+                }
                 //TriggerDialog(collision.gameObject.GetComponent<DialogueText>());
             }
         }
@@ -31,12 +37,13 @@ public class PlayerDialogueDetector : MonoBehaviour
     {
         Player.instance.ChangePlayerDialogLock(obj.lockPosition);
         yield return new WaitForSeconds(obj.timeToStart);
-        DialogueManager.instance.SetVisible(obj.gameObject);
         timer = obj.playTime;
         dialogEnded = obj.playTime <= 0;
+        DialogueManager.instance.SetVisible(obj.gameObject);
         
-        if (obj.isDestroyable())
-            Destroy(obj.gameObject);
+        
+        //if (obj.isDestroyable())
+            //Destroy(obj.gameObject);
     }
 
     private void Update()
@@ -50,6 +57,10 @@ public class PlayerDialogueDetector : MonoBehaviour
                 //Player.instance.positionLocked = false;
                 DialogueManager.instance.SetInvisible();
                 dialogEnded = true;
+                /*if (triggeredDialog.GetComponent<DialogueText>().isDestroyable())
+                {
+                    Destroy(triggeredDialog);
+                }*/
             }
         }
     }
