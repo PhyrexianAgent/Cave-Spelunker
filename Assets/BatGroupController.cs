@@ -5,6 +5,7 @@ using UnityEngine;
 public class BatGroupController : MonoBehaviour
 {
     public BatController[] bats;
+
     private bool awakening = false;
 
     private int[] indexes;

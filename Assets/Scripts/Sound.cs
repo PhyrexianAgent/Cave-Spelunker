@@ -8,6 +8,8 @@ public class Sound : MonoBehaviour
 
     private float damage = 0;
 
+    private List<Vector3> foundNames = new List<Vector3>();
+
     public void GenerateSound(float damage, float radius, bool isQuietSound = false)
     {
         CircleCollider2D coll = GetComponent<CircleCollider2D>();
@@ -36,7 +38,10 @@ public class Sound : MonoBehaviour
         switch (tag)
         {
             case "Bat Listener":
-                obj.GetComponent<BatListenerController>().owner.HeardquietSound(damage);
+                if (!foundNames.Contains(obj.transform.position)) {
+                    obj.GetComponent<BatListenerController>().owner.HeardquietSound(damage);
+                    foundNames.Add(obj.transform.position);
+                }
                 break;
         }
     }

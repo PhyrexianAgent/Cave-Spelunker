@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BatController : MonoBehaviour
 {
-    private const float MAX_SOUND_HEALTH_RESET_TIME = 1;
+    private const float MAX_SOUND_HEALTH_RESET_TIME = 2;
 
     [Header("Component References")]
     public Rigidbody2D rigid;
@@ -65,6 +65,10 @@ public class BatController : MonoBehaviour
         {
             QuietSoundHeard();
         }
+        else
+        {
+            resetSoundHealthTimer = MAX_SOUND_HEALTH_RESET_TIME;
+        }
     }
 
     private void QuietSoundHeard()
@@ -78,7 +82,7 @@ public class BatController : MonoBehaviour
             SetState(BatStates.Wakening);
             Invoke("ReturnToSleep", Random.Range(3, 6));
             Debug.Log("waking");
-            soundHealth = soundHealthStart / 2;
+            //soundHealth = soundHealthStart / 2;
         }
     }
 
@@ -88,7 +92,7 @@ public class BatController : MonoBehaviour
         {
             SetState(BatStates.Sleep);
             soundHealth = soundHealthStart;
-            resetSoundHealthTimer = MAX_SOUND_HEALTH_RESET_TIME;
+            //resetSoundHealthTimer = MAX_SOUND_HEALTH_RESET_TIME;
         }
     }
 
