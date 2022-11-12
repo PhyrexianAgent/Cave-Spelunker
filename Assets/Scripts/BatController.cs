@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BatController : MonoBehaviour
 {
+    private const float MAX_SOUND_HEALTH_RESET_TIME = 1;
+
     [Header("Component References")]
     public Rigidbody2D rigid;
     public BoxCollider2D coll;
@@ -13,21 +15,31 @@ public class BatController : MonoBehaviour
     [Header("Chase Vals")]
     [SerializeField] private float followSpeed = 5;
 
+    [Header("Sound Vals")]
+    [SerializeField] private float soundHealthStart = 10;
+
     [Header("Other Vars")]
     public BatGroupController groupController;
 
     private BatStates currentState = BatStates.Sleep;
+    private float soundHealth;
+
+    private float resetSoundHealthTimer = 0;
     void Start()
     {
-        
+        soundHealth = soundHealthStart;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (currentState == BatStates.Wakening)
+        if (resetSoundHealthTimer > 0)
         {
-
+            resetSoundHealthTimer -= Time.deltaTime;
+            if (resetSoundHealthTimer <= 0)
+            {
+                soundHealth = soundHealthStart;
+            }
         }
     }
 
@@ -46,7 +58,16 @@ public class BatController : MonoBehaviour
         rigid.velocity = diffNorm * followSpeed;
     }
 
-    public void HeardquietSound()
+    public void HeardquietSound(float damage)
+    {
+        soundHealth -= damage;
+        if (soundHealth <= 0)
+        {
+            QuietSoundHeard();
+        }
+    }
+
+    private void QuietSoundHeard()
     {
         if (currentState == BatStates.Wakening)
         {
@@ -56,6 +77,8 @@ public class BatController : MonoBehaviour
         {
             SetState(BatStates.Wakening);
             Invoke("ReturnToSleep", Random.Range(3, 6));
+            Debug.Log("waking");
+            soundHealth = soundHealthStart / 2;
         }
     }
 
@@ -64,6 +87,8 @@ public class BatController : MonoBehaviour
         if (currentState == BatStates.Wakening)
         {
             SetState(BatStates.Sleep);
+            soundHealth = soundHealthStart;
+            resetSoundHealthTimer = MAX_SOUND_HEALTH_RESET_TIME;
         }
     }
 

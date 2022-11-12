@@ -36,7 +36,7 @@ public class Sound : MonoBehaviour
         switch (tag)
         {
             case "Bat Listener":
-                obj.GetComponent<BatListenerController>().owner.HeardquietSound();
+                obj.GetComponent<BatListenerController>().owner.HeardquietSound(damage);
                 break;
         }
     }

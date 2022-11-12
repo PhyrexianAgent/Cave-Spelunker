@@ -6,7 +6,10 @@ public class BatListenerController : MonoBehaviour
 {
     public BatController owner;
 
+    
+
     private LayerMask detectLayers;
+
     void Start()
     {
         detectLayers = LayerMask.GetMask("Player", "Ground", "Walls");
@@ -23,6 +26,7 @@ public class BatListenerController : MonoBehaviour
         return owner.CompareState(BatStates.Sleep) || owner.CompareState(BatStates.Wakening);
     }
 
+
     public void AwakenBat()
     {
         if (PlayerSeeable())
@@ -33,7 +37,6 @@ public class BatListenerController : MonoBehaviour
         {
             Debug.Log("player not visible");
         }
-        
     }
 
     private bool PlayerSeeable()

@@ -13,6 +13,8 @@ public class PlayerAnimation : MonoBehaviour
     private Animator anim;
     [SerializeField] private float walkSoundSize = 8;
     [SerializeField] private float walkSoundDamage = 10;
+    [SerializeField] private float sneakSoundDamage = 5;
+    [SerializeField] private float runSoundSize = 10;
     //private SpriteRenderer spriteRenderer;
     [SerializeField]
     public CapsuleCollider2D collider2D;
@@ -77,19 +79,19 @@ public class PlayerAnimation : MonoBehaviour
 
     public void PlayWalk()
     {
-        CreateSound(false);
+        CreateSound(false, walkSoundDamage, walkSoundSize);
         AudioManager.instance.Play("Walk");
     }
 
     public void PlaySneak()
     {
-        CreateSound(true);
+        CreateSound(true, sneakSoundDamage, walkSoundSize);
         AudioManager.instance.Play("Sneak");
     }
 
     public void PlayRun()
     {
-        CreateSound(false);
+        CreateSound(false, walkSoundDamage, runSoundSize);
         AudioManager.instance.Play("Run");
     }
 
@@ -143,9 +145,9 @@ public class PlayerAnimation : MonoBehaviour
         }
     }
 
-    private void CreateSound(bool isQuiet) // will change a bit when running is added to have running make a louder noise
+    private void CreateSound(bool isQuiet, float damage, float size) // will change a bit when running is added to have running make a louder noise
     {
         GameObject newSound = Instantiate(soundPrefab, transform.position, Quaternion.identity);
-        newSound.GetComponent<Sound>().GenerateSound(walkSoundDamage, walkSoundSize, isQuiet);
+        newSound.GetComponent<Sound>().GenerateSound(damage, size, isQuiet);
     }
 }

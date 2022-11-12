@@ -442,8 +442,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.25658453
-      value: 0.11000383
+      time: 0.2596668
+      value: 0.010325789
       inSlope: 1.3653736
       outSlope: 1.3653736
       tangentMode: 0
@@ -451,8 +451,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.5132305
-      value: -0.16322514
+      time: 0.50402665
+      value: -0.013707437
       inSlope: 2.4291496
       outSlope: 2.4291496
       tangentMode: 0
@@ -460,8 +460,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.6330581
-      value: 0.08507447
+      time: 0.67910993
+      value: -0.019277297
       inSlope: 0.68318725
       outSlope: 0.68318725
       tangentMode: 0
@@ -586,7 +586,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3255424638885109987}
   - component: {fileID: 3198957086559263806}
-  - component: {fileID: 2574227431092661675}
   - component: {fileID: 5723294108901389329}
   m_Layer: 8
   m_Name: Sprite
@@ -662,26 +661,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &2574227431092661675
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5207173048419982422}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a261db8dc6a23354e9daa1137ae203f1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &5723294108901389329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -697,6 +676,8 @@ MonoBehaviour:
   rigidBody: {fileID: 1655382623063545581}
   walkSoundSize: 8
   walkSoundDamage: 10
+  sneakSoundDamage: 5
+  runSoundSize: 10
   collider2D: {fileID: 2199122865708589905}
   soundPrefab: {fileID: 1386395118515020664, guid: c93954b3a5bc931499566b6a4cb8fda1, type: 3}
 --- !u!1 &6974555232215395869
