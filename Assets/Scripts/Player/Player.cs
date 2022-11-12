@@ -146,7 +146,7 @@ public class Player : MonoBehaviour
         {
             speedMult = SPRINT_SPEED_MULT;
         }
-        if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
+        if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftAlt))
         {
             speedMult = SNEAK_SPEED_MULT;
         }
