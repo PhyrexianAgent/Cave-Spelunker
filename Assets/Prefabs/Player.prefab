@@ -134,7 +134,7 @@ SpringJoint2D:
   m_Anchor: {x: 1, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 2.9154758
+  m_Distance: 1
   m_DampingRatio: 1
   m_Frequency: 1
 --- !u!1 &2235243068002228718
@@ -587,6 +587,7 @@ GameObject:
   - component: {fileID: 3255424638885109987}
   - component: {fileID: 3198957086559263806}
   - component: {fileID: 5723294108901389329}
+  - component: {fileID: 3425717780285720326}
   m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
@@ -680,6 +681,26 @@ MonoBehaviour:
   runSoundSize: 10
   collider2D: {fileID: 2199122865708589905}
   soundPrefab: {fileID: 1386395118515020664, guid: c93954b3a5bc931499566b6a4cb8fda1, type: 3}
+--- !u!95 &3425717780285720326
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5207173048419982422}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a261db8dc6a23354e9daa1137ae203f1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6974555232215395869
 GameObject:
   m_ObjectHideFlags: 0
