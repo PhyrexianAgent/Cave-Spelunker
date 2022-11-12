@@ -154,7 +154,7 @@ public class Player : MonoBehaviour
     }
     public bool IsSneaking()
     {
-        return Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
+        return Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftAlt);
     }
     void Jump()
     {

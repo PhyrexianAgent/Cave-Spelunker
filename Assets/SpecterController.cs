@@ -99,7 +99,7 @@ public class SpecterController : MonoBehaviour
         switch (collision.gameObject.tag) 
         {
             case "Light":
-                if (currentState != SpecterState.Killing && currentState != SpecterState.Hiding)
+                if (currentState == SpecterState.Following)
                     SetState(SpecterState.Hiding);
                 break;
             case "Player":
