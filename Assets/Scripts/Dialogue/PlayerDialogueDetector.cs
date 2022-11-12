@@ -4,20 +4,39 @@ using UnityEngine;
 
 public class PlayerDialogueDetector : MonoBehaviour
 {
+    public static PlayerDialogueDetector instance;
+
     bool dialogEnded = false;
     float timer;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("DialogueTrigger"))
         {
             if(DialogueManager.instance.visible == false)
             {
-                DialogueManager.instance.SetVisible(collision.gameObject);
-                timer = collision.gameObject.GetComponent<DialogueText>().playTime;
-                dialogEnded = collision.gameObject.GetComponent<DialogueText>().playTime <= 0;
-                Player.instance.ChangePlayerDialogLock(collision.gameObject.GetComponent<DialogueText>().lockPosition);
+                StartCoroutine(TriggerDialog(collision.gameObject.GetComponent<DialogueText>()));
+                //TriggerDialog(collision.gameObject.GetComponent<DialogueText>());
             }
         }
+    }
+
+    public IEnumerator TriggerDialog(DialogueText obj)
+    {
+        Player.instance.ChangePlayerDialogLock(obj.lockPosition);
+        yield return new WaitForSeconds(obj.timeToStart);
+        DialogueManager.instance.SetVisible(obj.gameObject);
+        timer = obj.playTime;
+        dialogEnded = obj.playTime <= 0;
+        
+        if (obj.isDestroyable())
+            Destroy(obj.gameObject);
     }
 
     private void Update()

@@ -14,6 +14,8 @@ public class DialogueText : MonoBehaviour
     [SerializeField]
     public float playTime = 0.0f;
 
+    public float timeToStart = 0;
+
     public bool isDestroyable()
     {
         return destroyAfterPlay;
@@ -21,8 +23,9 @@ public class DialogueText : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (destroyAfterPlay)
+        if (destroyAfterPlay && timeToStart == 0)
         {
+            //Debug.Log(timeToStart);
             Destroy(gameObject);
         }
     }

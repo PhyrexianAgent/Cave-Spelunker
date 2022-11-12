@@ -11,6 +11,7 @@ public class BatController : MonoBehaviour
     public BoxCollider2D coll;
     public Animator anim;
     public BatAttackArea attackArea;
+    public DialogueText dialog;
 
     [Header("Chase Vals")]
     [SerializeField] private float followSpeed = 5;
@@ -79,10 +80,21 @@ public class BatController : MonoBehaviour
         }
         else
         {
+            float waitTime = Random.Range(3, 6);
             SetState(BatStates.Wakening);
-            Invoke("ReturnToSleep", Random.Range(3, 6));
-            Debug.Log("waking");
+            Invoke("ReturnToSleep", waitTime);
             soundHealth = soundHealthStart / 2;
+            TestForDialog(waitTime);
+        }
+    }
+
+    private void TestForDialog(float waitTime)
+    {
+        if (!Player.instance.encounteredBats)
+        {
+            dialog.timeToStart = waitTime + 0.5f;
+            StartCoroutine(PlayerDialogueDetector.instance.TriggerDialog(dialog));
+            Player.instance.encounteredBats = true;
         }
     }
 

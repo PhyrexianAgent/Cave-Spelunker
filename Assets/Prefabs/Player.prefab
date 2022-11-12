@@ -38,6 +38,7 @@ Transform:
   - {fileID: 8727118963049516288}
   - {fileID: 2217571171604025883}
   - {fileID: 5517498009786279333}
+  - {fileID: 2838313239279936227}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -84,6 +85,7 @@ MonoBehaviour:
   climbSpeed: 7
   grappleDescendSpeed: 10
   grapplingGun: {fileID: 0}
+  encounteredBats: 1
   jumpSpeed: 15
   rb: {fileID: 1655382623063545581}
   soundPrefab: {fileID: 1386395118515020664, guid: c93954b3a5bc931499566b6a4cb8fda1, type: 3}
@@ -134,7 +136,7 @@ SpringJoint2D:
   m_Anchor: {x: 1, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 1
+  m_Distance: 46.73454
   m_DampingRatio: 1
   m_Frequency: 1
 --- !u!1 &2235243068002228718
@@ -675,6 +677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 1655382623063545581}
+  anim: {fileID: 0}
   walkSoundSize: 8
   walkSoundDamage: 10
   sneakSoundDamage: 5
@@ -965,4 +968,74 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5190829704365457672, guid: 2866f5fb8b478cb4c8208afd23e31914, type: 3}
   m_PrefabInstance: {fileID: 1655382624463137151}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3106374961307197242
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1655382623063545583}
+    m_Modifications:
+    - target: {fileID: 900642185751543254, guid: 49259959373b3c84499b90089752d60f, type: 3}
+      propertyPath: m_Name
+      value: Dialog Trigger No Coll
+      objectReference: {fileID: 0}
+    - target: {fileID: 900642185751543256, guid: 49259959373b3c84499b90089752d60f, type: 3}
+      propertyPath: message
+      value: 'Woah, giant mushrooms and giant spiders. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 900642185751543256, guid: 49259959373b3c84499b90089752d60f, type: 3}
+      propertyPath: lockPosition
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 900642185751543257, guid: 49259959373b3c84499b90089752d60f, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 900642185751543257, guid: 49259959373b3c84499b90089752d60f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 900642185751543257, guid: 49259959373b3c84499b90089752d60f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 900642185751543257, guid: 49259959373b3c84499b90089752d60f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 900642185751543257, guid: 49259959373b3c84499b90089752d60f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 900642185751543257, guid: 49259959373b3c84499b90089752d60f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 900642185751543257, guid: 49259959373b3c84499b90089752d60f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 900642185751543257, guid: 49259959373b3c84499b90089752d60f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 900642185751543257, guid: 49259959373b3c84499b90089752d60f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 900642185751543257, guid: 49259959373b3c84499b90089752d60f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 900642185751543257, guid: 49259959373b3c84499b90089752d60f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 49259959373b3c84499b90089752d60f, type: 3}
+--- !u!4 &2838313239279936227 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 900642185751543257, guid: 49259959373b3c84499b90089752d60f, type: 3}
+  m_PrefabInstance: {fileID: 3106374961307197242}
   m_PrefabAsset: {fileID: 0}

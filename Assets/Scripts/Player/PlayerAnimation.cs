@@ -10,7 +10,7 @@ public class PlayerAnimation : MonoBehaviour
 
     [SerializeField]
     private Rigidbody2D rigidBody;
-    private Animator anim;
+    public Animator anim;
     [SerializeField] private float walkSoundSize = 8;
     [SerializeField] private float walkSoundDamage = 10;
     [SerializeField] private float sneakSoundDamage = 5;

@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GrapplingGun grapplingGun;
     private bool isGrounded = true;
     private bool isDead = false;
+    public bool encounteredBats = false;
 
     private PlayerStates currentState = PlayerStates.Normal;
 
@@ -66,8 +67,14 @@ public class Player : MonoBehaviour
     {
         DoStateActions();
         TestForGrounded();
-        Move();
+        if (currentState != PlayerStates.LockedInSpeaking)
+            Move();
         RotateFlashlight();
+    }
+
+    public bool IsPlayerLocked()
+    {
+        return currentState == PlayerStates.LockedInSpeaking;
     }
 
     private void DoStateActions()
@@ -179,7 +186,7 @@ public class Player : MonoBehaviour
 
     public float getMoveBy()
     {
-        return moveBy;
+        return IsPlayerLocked() ? 0 : moveBy;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -209,6 +216,7 @@ public class Player : MonoBehaviour
 
     public void ChangePlayerDialogLock(bool isLocked)
     {
+        Debug.Log(isLocked);
         SetCurrentState(isLocked ? PlayerStates.LockedInSpeaking : PlayerStates.Normal);
     }
 
