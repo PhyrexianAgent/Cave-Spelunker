@@ -53,7 +53,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: Sneak
-    clip: {fileID: 8300000, guid: 0bc66974c41ff8c4fa15f46d21ad3548, type: 3}
+    clip: {fileID: 8300000, guid: 53e2adf2ac488ef46bb2b4074de9e363, type: 3}
     mixer: {fileID: 0}
     volume: 0.125
     pitch: 1
