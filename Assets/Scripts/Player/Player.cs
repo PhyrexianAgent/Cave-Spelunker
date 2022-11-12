@@ -45,21 +45,23 @@ public class Player : MonoBehaviour
     }
     void Start()
     {
-        //PlayerDeathMenuController.instance.PlayerDied();
-        //playerSounds = this.GetComponent<AudioSource>();
+    }
+
+    public bool IsGrappled()
+    {
+        return currentState == PlayerStates.Grappled;
     }
 
     private void SetCurrentState(PlayerStates state)
     {
         if (currentState == PlayerStates.Grappled && grappleGun.GetIsGrappling() && state != currentState)
         {
-            //Debug.Log("disabling grapple");
             grappleGun.DisableGrapple();
         }
         currentState = state;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         DoStateActions();
@@ -70,7 +72,6 @@ public class Player : MonoBehaviour
 
     private void DoStateActions()
     {
-        //Debug.Log(currentState);
         switch (currentState)
         {
             case PlayerStates.Normal:
@@ -94,26 +95,13 @@ public class Player : MonoBehaviour
     private void MoveInGrapple()
     {
         grappleGun.GoUp(Input.GetKey(KeyCode.W));
-        if (Input.GetKey(KeyCode.S))
-            DescendGrapple();
-        else
-        {
-            rb.velocity = Vector2.zero;
-            //Debug.Log("not going down");
-        }
-    }
-
-    private void DescendGrapple()
-    {
-        rb.velocity = new Vector2(0, -grappleDescendSpeed * Time.deltaTime * 100);
-        //Debug.Log(rb.velocity);
     }
 
     private void TestForGrounded()
     {
         bool oldGrounded = isGrounded;
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, MAX_GROUND_TEST_DIST, groundLayerMask);
-        if (!oldGrounded && isGrounded && GetComponent<Rigidbody2D>().velocity.y < -8)
+        if (!oldGrounded && isGrounded && GetComponent<Rigidbody2D>().velocity.y < -9.2)
         {
             Debug.Log(GetComponent<Rigidbody2D>().velocity.y);
             GenerateSound(jumpSoundDamage, Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y * JUMP_SIZE_MULT), false); // done this way to make sure jumping up to ledges makes a smaller sound then landing from height

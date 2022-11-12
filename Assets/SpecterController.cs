@@ -99,7 +99,7 @@ public class SpecterController : MonoBehaviour
                     SetState(SpecterState.Hiding);
                 break;
             case "Player":
-                if (currentState != SpecterState.Hiding)
+                if (currentState != SpecterState.Hiding && canKillPlayer)
                     SetState(SpecterState.Killing);
                 break;
         }

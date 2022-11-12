@@ -79,20 +79,30 @@ public class PlayerAnimation : MonoBehaviour
 
     public void PlayWalk()
     {
-        CreateSound(false, walkSoundDamage, walkSoundSize);
-        AudioManager.instance.Play("Walk");
+        if (!Player.instance.IsGrappled())
+        {
+            CreateSound(false, walkSoundDamage, walkSoundSize);
+            AudioManager.instance.Play("Walk");
+        }
     }
 
     public void PlaySneak()
     {
-        CreateSound(true, sneakSoundDamage, walkSoundSize);
-        AudioManager.instance.Play("Sneak");
+        if (!Player.instance.IsGrappled())
+        {
+            CreateSound(true, sneakSoundDamage, walkSoundSize);
+            AudioManager.instance.Play("Sneak");
+        }
     }
 
     public void PlayRun()
     {
-        CreateSound(false, walkSoundDamage, runSoundSize);
-        AudioManager.instance.Play("Run");
+        if (!Player.instance.IsGrappled())
+        {
+            CreateSound(false, walkSoundDamage, runSoundSize);
+            AudioManager.instance.Play("Run");
+        }
+        
     }
 
     private void CheckEndWalk()

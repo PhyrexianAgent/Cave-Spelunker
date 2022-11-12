@@ -45,6 +45,11 @@ public class GrapplingRope : MonoBehaviour
         m_lineRenderer.enabled = true;
     }
 
+    public bool IsGrappled()
+    {
+        return strightLine;
+    }
+
     private void OnDisable()
     {
         m_lineRenderer.enabled = false;
