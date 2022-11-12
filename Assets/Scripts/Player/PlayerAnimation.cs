@@ -58,14 +58,39 @@ public class PlayerAnimation : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
         {
             walkTime -= WALK_START_REMOVE;
-            PlayWalk();
-            CheckEndWalk();
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                PlaySneak();
+            }
+            else if (Input.GetKey(KeyCode.LeftShift))
+            {
+                PlayRun();
+            }
+            else
+            {
+                PlayWalk();
+            }
+            //PlayWalk();
+            //CreateSound(Player.instance.IsSneaking());
         }
     }
 
     public void PlayWalk()
     {
+        CreateSound(false);
         AudioManager.instance.Play("Walk");
+    }
+
+    public void PlaySneak()
+    {
+        CreateSound(true);
+        AudioManager.instance.Play("Sneak");
+    }
+
+    public void PlayRun()
+    {
+        CreateSound(false);
+        AudioManager.instance.Play("Run");
     }
 
     private void CheckEndWalk()
@@ -74,7 +99,7 @@ public class PlayerAnimation : MonoBehaviour
         {
             //AudioManager.instance.Play("Walk");
             walkTime = MAX_WALK_TIME;
-            CreateSound(Player.instance.IsSneaking());
+            //CreateSound(Player.instance.IsSneaking());
         }
     }
 
