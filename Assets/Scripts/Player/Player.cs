@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float climbSpeed = 7;
     [SerializeField] private float grappleDescendSpeed = 3;
     [SerializeField] private GrapplingGun grapplingGun;
+    [SerializeField] private float flashlightRayDistance = 10;
     private bool isGrounded = true;
     private bool isDead = false;
     public bool encounteredBats = false;
@@ -65,6 +66,22 @@ public class Player : MonoBehaviour
 
 
     void Update()
+    {
+        CheckFlashlightRay();
+    }
+
+    private void CheckFlashlightRay()
+    {
+        Vector3 pointDir = flashlight.transform.rotation * Vector3.up;
+        RaycastHit2D hit = Physics2D.Raycast(flashlight.transform.position, pointDir, flashlightRayDistance);
+        if (hit && hit.collider.gameObject.tag == "Specter")
+        {
+            hit.collider.GetComponent<SpecterController>().LightHitSpecter();
+        }
+        Debug.DrawRay(flashlight.transform.position, pointDir * flashlightRayDistance, Color.green);
+    }
+
+    private void FixedUpdate()
     {
         DoStateActions();
         TestForGrounded();

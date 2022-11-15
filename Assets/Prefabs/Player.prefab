@@ -84,7 +84,9 @@ MonoBehaviour:
   climbSpeed: 7
   grappleDescendSpeed: 10
   grapplingGun: {fileID: 0}
+  flashlightRayDistance: 25
   encounteredBats: 1
+  encounteredSpecter: 1
   jumpSpeed: 15
   rb: {fileID: 1655382623063545581}
   soundPrefab: {fileID: 1386395118515020664, guid: c93954b3a5bc931499566b6a4cb8fda1, type: 3}
@@ -135,7 +137,7 @@ SpringJoint2D:
   m_Anchor: {x: 1, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 46.443153
+  m_Distance: 3.2409875
   m_DampingRatio: 1
   m_Frequency: 1
 --- !u!1 &2235243068002228718
@@ -198,8 +200,7 @@ Transform:
   m_LocalPosition: {x: 1.261, y: 0.209, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2223919102895304296}
+  m_Children: []
   m_Father: {fileID: 1655382623063545583}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -846,54 +847,6 @@ Transform:
   m_Father: {fileID: 9031122640533221377}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &7988577342676061954
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2223919102895304296}
-  - component: {fileID: 8424423012066324493}
-  m_Layer: 2
-  m_Name: FlashTrigger
-  m_TagString: Light
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2223919102895304296
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7988577342676061954}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2217571171604025883}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &8424423012066324493
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7988577342676061954}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.06807256, y: 8.381305}
-  m_Size: {x: 1.9975972, y: 17.76261}
-  m_Direction: 0
 --- !u!1001 &1655382624463137151
 PrefabInstance:
   m_ObjectHideFlags: 0

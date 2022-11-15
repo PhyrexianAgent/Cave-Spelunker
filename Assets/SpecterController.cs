@@ -98,15 +98,17 @@ public class SpecterController : MonoBehaviour
     {
         switch (collision.gameObject.tag) 
         {
-            case "Light":
-                if (currentState == SpecterState.Following)
-                    SetState(SpecterState.Hiding);
-                break;
             case "Player":
                 if (currentState != SpecterState.Hiding && canKillPlayer)
                     SetState(SpecterState.Killing);
                 break;
         }
+    }
+
+    public void LightHitSpecter()
+    {
+        if (currentState == SpecterState.Following)
+            SetState(SpecterState.Hiding);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
