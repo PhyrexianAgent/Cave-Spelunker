@@ -154,11 +154,11 @@ public class Player : MonoBehaviour
     }
     public bool IsSneaking()
     {
-        return Input.GetKey(KeyCode.S);//Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftAlt);
+        return false;//Input.GetKey(KeyCode.S);//Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftAlt);
     }
     void Jump()
     {
-        if ((Input.GetKeyDown("up") || Input.GetKeyDown("w")) && isGrounded)
+        if ((Input.GetKeyDown("up") || Input.GetKeyDown("w") || Input.GetKeyDown(KeyCode.Space)) && isGrounded)
         {
             //playerSounds.PlayOneShot(jump);
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
