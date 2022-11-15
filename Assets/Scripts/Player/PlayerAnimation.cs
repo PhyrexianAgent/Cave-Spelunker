@@ -51,7 +51,7 @@ public class PlayerAnimation : MonoBehaviour
 
         TestForWalkStart();
 
-        MovementDetects();
+        //MovementDetects();
         TestWalk();
     }
 
@@ -60,7 +60,7 @@ public class PlayerAnimation : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
         {
             walkTime -= WALK_START_REMOVE;
-            if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftAlt))
+            if (Input.GetKey(KeyCode.S))//(Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftAlt))
             {
                 PlaySneak();
             }

@@ -146,7 +146,7 @@ public class Player : MonoBehaviour
         {
             speedMult = SPRINT_SPEED_MULT;
         }
-        if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftAlt))
+        if (Input.GetKey(KeyCode.S))//(Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftAlt))
         {
             speedMult = SNEAK_SPEED_MULT;
         }
@@ -154,7 +154,7 @@ public class Player : MonoBehaviour
     }
     public bool IsSneaking()
     {
-        return Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftAlt);
+        return Input.GetKey(KeyCode.S);//Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftAlt);
     }
     void Jump()
     {
