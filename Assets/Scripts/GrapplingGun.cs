@@ -146,21 +146,31 @@ public class GrapplingGun : MonoBehaviour
 
     void SetGrapplePoint()
     {
-        Vector2 distanceVector = m_camera.ScreenToWorldPoint(Input.mousePosition) - gunPivot.position;
+        Vector2 distanceVector = m_camera.ScreenToWorldPoint(Input.mousePosition) - gunPivot.position; //-0.39 0.42
         if (Physics2D.Raycast(firePoint.position, distanceVector.normalized))
         {
             //RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized);
             RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized, Mathf.Infinity, groundLayer);
-            if (_hit && _hit.transform.gameObject.layer == grappableLayerNumber || grappleToAll)
+            //Debug.Log(Player.instance.flashlight.transform.rotation.z);
+            if (WithinProperAngles())
             {
-                if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
+                if (_hit && _hit.transform.gameObject.layer == grappableLayerNumber || grappleToAll)
                 {
-                    grapplePoint = _hit.point;
-                    grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
-                    grappleRope.enabled = true;
+                    if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
+                    {
+                        grapplePoint = _hit.point;
+                        grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
+                        grappleRope.enabled = true;
+                    }
                 }
             }
         }
+    }
+
+    private bool WithinProperAngles()
+    {
+        GameObject flashlight = Player.instance.flashlight;
+        return flashlight.transform.rotation.z > -0.39f && flashlight.transform.rotation.z < 0.42;
     }
 
     public void Grapple()
