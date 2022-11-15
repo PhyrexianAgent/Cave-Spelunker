@@ -154,7 +154,7 @@ public class GrapplingGun : MonoBehaviour
             //Debug.Log(Player.instance.flashlight.transform.rotation.z);
             if (WithinProperAngles())
             {
-                if (_hit && _hit.transform.gameObject.layer == grappableLayerNumber || grappleToAll)
+                if (_hit && _hit.collider.gameObject.tag != "Unstable Ground" && _hit.transform.gameObject.layer == grappableLayerNumber || grappleToAll)
                 {
                     if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
                     {
