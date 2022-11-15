@@ -67,6 +67,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        DoStateActions();
         CheckFlashlightRay();
     }
 
@@ -83,7 +84,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        DoStateActions();
+        
         TestForGrounded();
         if (currentState != PlayerStates.LockedInSpeaking)
             Move();
@@ -101,14 +102,14 @@ public class Player : MonoBehaviour
         {
             case PlayerStates.Normal:
                 Jump();
-                BetterJump();
+                //BetterJump();
                 break;
             case PlayerStates.Grappled:
                 MoveInGrapple();
                 break;
             case PlayerStates.LockedInSpeaking:
-                rb.velocity = Vector2.zero;
-                rb.gravityScale = 0;
+                rb.velocity = new Vector2(0, rb.velocity.y);//Vector2.zero;
+                //rb.gravityScale = 0;
                 break;
         }
     }
@@ -129,7 +130,7 @@ public class Player : MonoBehaviour
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, MAX_GROUND_TEST_DIST, groundLayerMask);
         if (!oldGrounded && isGrounded && GetComponent<Rigidbody2D>().velocity.y < -9.2)
         {
-            Debug.Log(GetComponent<Rigidbody2D>().velocity.y);
+            //Debug.Log(GetComponent<Rigidbody2D>().velocity.y);
             GenerateSound(jumpSoundDamage, Mathf.Abs(GetComponent<Rigidbody2D>().velocity.y * JUMP_SIZE_MULT), false); // done this way to make sure jumping up to ledges makes a smaller sound then landing from height
         }
     }
@@ -178,6 +179,7 @@ public class Player : MonoBehaviour
         if ((Input.GetKeyDown("up") || Input.GetKeyDown("w") || Input.GetKeyDown(KeyCode.Space)) && isGrounded)
         {
             //playerSounds.PlayOneShot(jump);
+            Debug.Log("jump9ing");
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
         }
     }
@@ -186,10 +188,6 @@ public class Player : MonoBehaviour
         if (rb.velocity.y < 0)
         {
             rb.velocity += Vector2.up * Physics2D.gravity * (FALL_MULTIPLIER - 1) * Time.deltaTime;
-        }
-        else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
-        {
-            rb.velocity += Vector2.up * Physics2D.gravity * (LOW_JUMP_MULTIPLIER - 1) * Time.deltaTime;
         }
     }
 
