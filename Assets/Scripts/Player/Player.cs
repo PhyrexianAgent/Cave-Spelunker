@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
 
     private const float MAX_GROUND_TEST_DIST = 1.68f;
     private const float FALL_MULTIPLIER = 2.5f;
-    private const float LOW_JUMP_MULTIPLIER = 2f;
     private const float JUMP_SIZE_MULT = 0.785f;
     private const float SPRINT_SPEED_MULT = 2;
     private const float SNEAK_SPEED_MULT = 0.5f;
@@ -180,16 +179,7 @@ public class Player : MonoBehaviour
     {
         if ((Input.GetKeyDown("up") || Input.GetKeyDown("w") || Input.GetKeyDown(KeyCode.Space)) && isGrounded)
         {
-            //playerSounds.PlayOneShot(jump);
-            Debug.Log("jump9ing");
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
-        }
-    }
-    void BetterJump()
-    {
-        if (rb.velocity.y < 0)
-        {
-            rb.velocity += Vector2.up * Physics2D.gravity * (FALL_MULTIPLIER - 1) * Time.deltaTime;
         }
     }
 
