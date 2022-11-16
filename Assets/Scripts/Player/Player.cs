@@ -204,6 +204,11 @@ public class Player : MonoBehaviour
         return isGrounded;
     }
 
+    public bool IsInDialogue()
+    {
+        return currentState == PlayerStates.LockedInSpeaking;
+    }
+
     public float getMoveBy()
     {
         return IsPlayerLocked() ? 0 : moveBy;

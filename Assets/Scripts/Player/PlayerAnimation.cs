@@ -57,7 +57,7 @@ public class PlayerAnimation : MonoBehaviour
 
     private void TestForWalkStart()
     {
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+        if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D)) && !Player.instance.IsInDialogue())
         {
             walkTime -= WALK_START_REMOVE;
             if (Input.GetKey(KeyCode.S))//(Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.LeftAlt))
