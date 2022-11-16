@@ -16,13 +16,26 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]
     Image backdrop;
     public bool visible = false;
+    public bool skippable = false;
     char[] displayText;
-   
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && visible && skippable)
+        {
+            SetInvisible();
+        }
+    }
+
     public void SetVisible(GameObject trigger)
     {
         this.visible = true;
         text.gameObject.SetActive(visible);
         backdrop.gameObject.SetActive(visible);
+        if (visible)
+        {
+            text.text = "";
+        }
         //Debug.Log();
         StartCoroutine(DisplayText(trigger.gameObject.GetComponent<DialogueText>().message));
     }
@@ -34,7 +47,8 @@ public class DialogueManager : MonoBehaviour
         text.text = "";
         text.gameObject.SetActive(visible);
         backdrop.gameObject.SetActive(visible);
-        Debug.Log("killing dialog");
+        Player.instance.ChangePlayerDialogLock(false);
+        //Debug.Log("killing dialog");
     }
 
     IEnumerator DisplayText(string info)

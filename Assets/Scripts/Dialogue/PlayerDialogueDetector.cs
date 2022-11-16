@@ -21,14 +21,10 @@ public class PlayerDialogueDetector : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("DialogueTrigger"))
         {
-            if(DialogueManager.instance.visible == false)
+            if (!collision.gameObject.GetComponent<DialogueText>().triggered || !collision.gameObject.GetComponent<DialogueText>().isDestroyable())
             {
-                if (!collision.gameObject.GetComponent<DialogueText>().triggered || !collision.gameObject.GetComponent<DialogueText>().isDestroyable())
-                {
-                    StartCoroutine(TriggerDialog(collision.gameObject.GetComponent<DialogueText>()));
-                    collision.gameObject.GetComponent<DialogueText>().triggered = true;
-                }
-                //TriggerDialog(collision.gameObject.GetComponent<DialogueText>());
+                StartCoroutine(TriggerDialog(collision.gameObject.GetComponent<DialogueText>()));
+                collision.gameObject.GetComponent<DialogueText>().triggered = true;
             }
         }
     }
@@ -36,6 +32,7 @@ public class PlayerDialogueDetector : MonoBehaviour
     public IEnumerator TriggerDialog(DialogueText obj)
     {
         Player.instance.ChangePlayerDialogLock(obj.lockPosition);
+        DialogueManager.instance.skippable = obj.lockPosition;
         yield return new WaitForSeconds(obj.timeToStart);
         timer = obj.playTime;
         dialogEnded = obj.playTime <= 0;
@@ -52,15 +49,8 @@ public class PlayerDialogueDetector : MonoBehaviour
             timer -= Time.deltaTime;
             if (timer <= 0)
             {
-                
-                Player.instance.ChangePlayerDialogLock(false);
-                //Player.instance.positionLocked = false;
                 DialogueManager.instance.SetInvisible();
                 dialogEnded = true;
-                /*if (triggeredDialog.GetComponent<DialogueText>().isDestroyable())
-                {
-                    Destroy(triggeredDialog);
-                }*/
             }
         }
     }
