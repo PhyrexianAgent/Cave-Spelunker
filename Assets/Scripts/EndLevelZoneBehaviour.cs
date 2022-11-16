@@ -26,7 +26,8 @@ public class EndLevelZoneBehaviour : MonoBehaviour
             }*/
             if (!isFinalLevel)
             {
-                SceneManager.LoadScene(nextLevelName);
+                PlayerDeathMenuController.instance.StartLevelEnd(nextLevelName);
+                //SceneManager.LoadScene(nextLevelName);
             }
             else
             {

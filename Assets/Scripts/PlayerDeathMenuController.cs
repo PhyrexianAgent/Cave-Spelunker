@@ -12,10 +12,11 @@ public class PlayerDeathMenuController : MonoBehaviour
 
     Scene scene;
 
-    public Animation anim;
+    public Animator anim;
     public TextMeshProUGUI text;
 
     private float timer = 0;
+    private string nextLevelName;
 
     private void Awake()
     {
@@ -30,21 +31,33 @@ public class PlayerDeathMenuController : MonoBehaviour
             timer -= Time.deltaTime;
             if (timer <= 0)
             {
-                anim.Play();
+                //anim.Play();
             }
         }
     }
 
+    public void StartLevelEnd(string nextLevelName)
+    {
+        this.nextLevelName = nextLevelName;
+        anim.SetTrigger("End Level");
+    }
+
     public void PlayerDied()
     {
-        anim.Play();
+        //anim.Play();
         //SceneManager.LoadScene(scene.name);
+        anim.SetTrigger("Player Died");
+    }
+
+    public void ChangeLevel()
+    {
+        SceneManager.LoadScene(nextLevelName);
     }
 
     public void PlayerWon()
     {
-        text.text = "That is all for this current version of the game.";
-        timer = 1;
+        //text.text = "That is all for this current version of the game.";
+        //timer = 1;
     }
 
     public void RestartLevel()
