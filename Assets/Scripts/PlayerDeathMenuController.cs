@@ -56,7 +56,8 @@ public class PlayerDeathMenuController : MonoBehaviour
 
     public void PlayerWon()
     {
-        //text.text = "That is all for this current version of the game.";
+        text.text = "That is all for this current version of the game.";
+        anim.SetTrigger("Player Won");
         //timer = 1;
     }
 
