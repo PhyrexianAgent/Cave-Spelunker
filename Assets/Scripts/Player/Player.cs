@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     public bool encounteredSpecter = true;
 
     private PlayerStates currentState = PlayerStates.Normal;
+    private float currentGravScale;
 
     [SerializeField] private float jumpSpeed;
     public Rigidbody2D rb;
@@ -48,6 +49,7 @@ public class Player : MonoBehaviour
     }
     void Start()
     {
+        currentGravScale = rb.gravityScale;
     }
 
     public bool IsGrappled()
@@ -154,7 +156,7 @@ public class Player : MonoBehaviour
         //Debug.Log(speedMult);
         moveBy = x * speed * speedMult;
         rb.velocity = new Vector2(moveBy, rb.velocity.y);
-        rb.gravityScale = 3;
+        rb.gravityScale = currentGravScale;
     }
 
     private float GetSpeedMult()

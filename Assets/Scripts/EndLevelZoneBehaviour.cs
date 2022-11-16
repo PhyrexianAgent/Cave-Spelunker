@@ -5,10 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class EndLevelZoneBehaviour : MonoBehaviour
 {
+    public string nextLevelName;
+    public bool isFinalLevel = false;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
+            /*
             CameraFollow.instance.followPlayer = false;
             if(SceneManager.GetActiveScene().name == "Level 1")
             {
@@ -17,6 +21,14 @@ public class EndLevelZoneBehaviour : MonoBehaviour
             {
                 SceneManager.LoadScene("Level 3");
             } else
+            {
+                PlayerDeathMenuController.instance.PlayerWon();
+            }*/
+            if (!isFinalLevel)
+            {
+                SceneManager.LoadScene(nextLevelName);
+            }
+            else
             {
                 PlayerDeathMenuController.instance.PlayerWon();
             }
