@@ -21,7 +21,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && visible && skippable)
+        if (Input.GetKeyDown(KeyCode.E) && visible && skippable)
         {
             SetInvisible();
         }
