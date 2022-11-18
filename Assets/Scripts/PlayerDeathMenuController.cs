@@ -23,7 +23,6 @@ public class PlayerDeathMenuController : MonoBehaviour
     {
         instance = this;
         scene = SceneManager.GetActiveScene();
-        Time.timeScale = 1;
     }
 
     private void Update()
