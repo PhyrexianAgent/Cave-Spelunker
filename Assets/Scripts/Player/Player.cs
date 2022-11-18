@@ -90,6 +90,11 @@ public class Player : MonoBehaviour
         if (currentState != PlayerStates.LockedInSpeaking)
             Move();
         RotateFlashlight();
+
+        if(Input.GetKey("escape") && Time.timeScale == 1)
+        {
+            Pause();
+        }
     }
 
     public bool IsPlayerLocked()
@@ -238,6 +243,17 @@ public class Player : MonoBehaviour
     public void SetPlayerGrapple(bool isGrappled)
     {
         SetCurrentState(isGrappled ? PlayerStates.Grappled : PlayerStates.Normal);
+    }
+
+    void Pause()
+    {
+        Time.timeScale = 0;
+        
+    }
+
+    public void Unpause()
+    {
+        Time.timeScale = 1;
     }
 
     private enum PlayerStates 
