@@ -7,6 +7,7 @@ using TMPro;
 public class PlayerDeathMenuController : MonoBehaviour
 {
     private const string MAIN_MENU_SCENE_NAME = "Main Menu";
+    private static string nextLevelName = "Level 1"; //first value is for whatever the first level the player can play's name is
 
     public static PlayerDeathMenuController instance;
 
@@ -16,7 +17,7 @@ public class PlayerDeathMenuController : MonoBehaviour
     public TextMeshProUGUI text;
 
     private float timer = 0;
-    private string nextLevelName;
+    
 
     private void Awake()
     {
@@ -38,7 +39,7 @@ public class PlayerDeathMenuController : MonoBehaviour
 
     public void StartLevelEnd(string nextLevelName)
     {
-        this.nextLevelName = nextLevelName;
+        PlayerDeathMenuController.nextLevelName = nextLevelName;
         anim.SetTrigger("End Level");
     }
 
@@ -69,5 +70,10 @@ public class PlayerDeathMenuController : MonoBehaviour
     public void ReturnToMenu()
     {
         SceneManager.LoadScene(MAIN_MENU_SCENE_NAME);
+    }
+
+    public static string GetCurrentLevel()
+    {
+        return nextLevelName;
     }
 }
