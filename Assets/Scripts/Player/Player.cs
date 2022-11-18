@@ -93,10 +93,6 @@ public class Player : MonoBehaviour
             Move();
         RotateFlashlight();
 
-        /*if(Input.GetKey("escape") && Time.timeScale == 1)
-        {
-            Pause();
-        }*/
     }
 
     public bool IsPlayerLocked()
@@ -110,14 +106,12 @@ public class Player : MonoBehaviour
         {
             case PlayerStates.Normal:
                 Jump();
-                //BetterJump();
                 break;
             case PlayerStates.Grappled:
                 MoveInGrapple();
                 break;
             case PlayerStates.LockedInSpeaking:
-                rb.velocity = new Vector2(0, rb.velocity.y);//Vector2.zero;
-                //rb.gravityScale = 0;
+                rb.velocity = new Vector2(0, rb.velocity.y);
                 break;
         }
     }
@@ -130,6 +124,10 @@ public class Player : MonoBehaviour
     private void MoveInGrapple()
     {
         grappleGun.GoUp(Input.GetKey(KeyCode.W));
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            AudioManager.instance.Play("GrapplePull");
+        }
     }
 
     private void TestForGrounded()
@@ -172,7 +170,7 @@ public class Player : MonoBehaviour
         {
             speedMult = SPRINT_SPEED_MULT;
         }
-        if (Input.GetKey(KeyCode.S))//(Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftAlt))
+        if (Input.GetKey(KeyCode.S))
         {
             speedMult = SNEAK_SPEED_MULT;
         }
@@ -180,7 +178,7 @@ public class Player : MonoBehaviour
     }
     public bool IsSneaking()
     {
-        return false;//Input.GetKey(KeyCode.S);//Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftAlt);
+        return false;
     }
     void Jump()
     {
