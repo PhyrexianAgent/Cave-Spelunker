@@ -23,6 +23,7 @@ public class PlayerDeathMenuController : MonoBehaviour
     {
         instance = this;
         scene = SceneManager.GetActiveScene();
+        Time.timeScale = 1;
     }
 
     private void Update()
@@ -35,6 +36,11 @@ public class PlayerDeathMenuController : MonoBehaviour
                 //anim.Play();
             }
         }
+    }
+
+    public void LevelStart()
+    {
+        Debug.Log("level started");
     }
 
     public void StartLevelEnd(string nextLevelName)
