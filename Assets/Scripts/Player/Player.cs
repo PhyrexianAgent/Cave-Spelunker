@@ -60,6 +60,8 @@ public class Player : MonoBehaviour
     {
         if (currentState == PlayerStates.Grappled && grappleGun.GetIsGrappling() && state != currentState)
         {
+            Debug.Log("disabling grapple from set state");
+            Debug.Log(state);
             grappleGun.DisableGrapple();
         }
         currentState = state;

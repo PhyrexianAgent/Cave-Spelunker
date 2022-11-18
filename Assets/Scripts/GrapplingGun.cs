@@ -112,6 +112,7 @@ public class GrapplingGun : MonoBehaviour
         grappleRope.enabled = false;
         m_springJoint2D.enabled = false;
         m_rigidbody.gravityScale = 4;
+        Debug.Log("enabling gravity in grapple gun");
     }
 
     public bool GetIsGrappling()
@@ -207,6 +208,7 @@ public class GrapplingGun : MonoBehaviour
                     break;
                 case LaunchType.Transform_Launch:
                     m_rigidbody.gravityScale = 0;
+                    Debug.Log("disabling gravity in grapple gun");
                     //m_rigidbody.velocity = Vector2.zero;
                     break;
             }
