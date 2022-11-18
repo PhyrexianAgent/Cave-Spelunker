@@ -91,10 +91,10 @@ public class Player : MonoBehaviour
             Move();
         RotateFlashlight();
 
-        if(Input.GetKey("escape") && Time.timeScale == 1)
+        /*if(Input.GetKey("escape") && Time.timeScale == 1)
         {
             Pause();
-        }
+        }*/
     }
 
     public bool IsPlayerLocked()
