@@ -42,6 +42,7 @@ public class StalactiteBehaviour : MonoBehaviour
         if (isFalling)
         {
             Destroy(gameObject);
+            AudioManager.instance.Play("Stalactite");
         }
     }
 

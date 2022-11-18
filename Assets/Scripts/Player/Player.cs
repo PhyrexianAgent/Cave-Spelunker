@@ -187,6 +187,7 @@ public class Player : MonoBehaviour
         if ((Input.GetKeyDown("up") || Input.GetKeyDown("w") || Input.GetKeyDown(KeyCode.Space)) && isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+            AudioManager.instance.Play("Jump");
         }
     }
 
@@ -229,9 +230,11 @@ public class Player : MonoBehaviour
     {
         if (!isDead)
         {
+            AudioManager.instance.Play("Dead");
             isDead = true;
             CameraFollow.instance.followPlayer = false;
             PlayerDeathMenuController.instance.PlayerDied();
+            
         }
         
     }

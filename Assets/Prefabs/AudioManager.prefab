@@ -66,3 +66,52 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Jump
+    clip: {fileID: 8300000, guid: b796f7e3b1a4d7344b7ee8d6c077a68f, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Dead
+    clip: {fileID: 8300000, guid: 57cb71e2ff6773d4a970f143464292c7, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: CrackedFloor
+    clip: {fileID: 8300000, guid: e3609084cdbbcd9408bcf764d4757708, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Stalactite
+    clip: {fileID: 8300000, guid: fba9ffbef730ed546ab22612642d76b6, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Bat
+    clip: {fileID: 8300000, guid: 339a633bf135f454fb3440afb31a8a0a, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: GrappleShot
+    clip: {fileID: 8300000, guid: e2d7546af7931c34ea4c83c69d09abb0, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: GrapplePull
+    clip: {fileID: 8300000, guid: 9e3a8956d402b8e4faf1eabc7b414191, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

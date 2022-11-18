@@ -20,5 +20,6 @@ public class CrackedFloorBehaviour : MonoBehaviour
     {
         //Debug.Log("entered");
         Destroy(gameObject);
+        AudioManager.instance.Play("CrackedFloor");
     }
 }
