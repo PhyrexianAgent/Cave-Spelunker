@@ -20,4 +20,12 @@ public class Sounds {
 	[HideInInspector]
 	public AudioSource source;
 
+	public void SetSource()
+    {
+		source.volume = volume;
+		source.clip = clip;
+		source.pitch = pitch;
+		source.loop = loop;
+    }
+
 }

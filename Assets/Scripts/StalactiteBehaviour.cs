@@ -9,11 +9,22 @@ public class StalactiteBehaviour : MonoBehaviour
     
     [SerializeField] private float fallGravity = 1;
 
+    [SerializeField] private Sounds[] sounds;
+
     private float health = HEALTH_MAX;
     private bool isFalling = false;
     void Start()
     {
-        
+        SetSoundsStartVals();
+    }
+
+    private void SetSoundsStartVals()
+    {
+        foreach (Sounds sound in sounds)
+        {
+            sound.source = AudioManager.instance.gameObject.AddComponent<AudioSource>();
+            sound.SetSource();
+        }
     }
 
     // Update is called once per frame
@@ -41,9 +52,18 @@ public class StalactiteBehaviour : MonoBehaviour
     {
         if (isFalling)
         {
+            
             Destroy(gameObject);
-            AudioManager.instance.Play("Stalactite");
+            PlayRandSound();
+            //AudioManager.instance.Play("Stalactite");
         }
+    }
+
+    private void PlayRandSound()
+    {
+        int randNum = Random.Range(0, sounds.Length);
+        sounds[randNum].source.Play();
+        Debug.Log(sounds[randNum].volume);
     }
 
     public bool GetIsFalling()

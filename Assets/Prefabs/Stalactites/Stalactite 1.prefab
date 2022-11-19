@@ -122,6 +122,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallGravity: 7
+  sounds:
+  - name: Break 1
+    clip: {fileID: 8300000, guid: 479c74d4f3a8bbd4bbdff0a3f9b63f57, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Break 2
+    clip: {fileID: 8300000, guid: 76f0881726fbd77418b61fecd5ab70ac, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Break 3
+    clip: {fileID: 8300000, guid: e0b30e8acf880df4890e4c7c692a2232, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Break 4
+    clip: {fileID: 8300000, guid: e6c4368331fb3df44bef0a4461e99371, type: 3}
+    mixer: {fileID: 0}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!60 &6842697580633477464
 PolygonCollider2D:
   m_ObjectHideFlags: 0
