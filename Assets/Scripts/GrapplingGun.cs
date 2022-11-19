@@ -147,7 +147,6 @@ public class GrapplingGun : MonoBehaviour
 
     void SetGrapplePoint()
     {
-        AudioManager.instance.Play("GrappleShot");
         Vector2 distanceVector = m_camera.ScreenToWorldPoint(Input.mousePosition) - gunPivot.position; //-0.39 0.42
         if (Physics2D.Raycast(firePoint.position, distanceVector.normalized))
         {
@@ -160,6 +159,7 @@ public class GrapplingGun : MonoBehaviour
                 {
                     if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
                     {
+                        AudioManager.instance.Play("GrappleShot");
                         grapplePoint = _hit.point;
                         grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
                         grappleRope.enabled = true;
