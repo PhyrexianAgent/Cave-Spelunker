@@ -12,6 +12,9 @@ public class MainMenuController : MonoBehaviour
     public Canvas mainButtons;
     public Canvas levelPickButtons;
     public Button[] levelButtons;
+
+    private string itchURL = "https://phyrexian-agent.itch.io/abyssal-caverns";
+
     void Start()
     {
         EnableLevelButtons();
@@ -25,7 +28,7 @@ public class MainMenuController : MonoBehaviour
 
     public void QuitGame()
     {
-        //add end game code here
+        Application.OpenURL(itchURL);
     }
 
     public void PlayGame()
