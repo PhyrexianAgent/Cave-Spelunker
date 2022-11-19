@@ -160,7 +160,8 @@ public class GrapplingGun : MonoBehaviour
                 {
                     if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
                     {
-                        AudioManager.instance.Play("GrappleShot");
+                        if (!PauseMenuController.isPaused)
+                            AudioManager.instance.Play("GrappleShot");
                         grapplePoint = _hit.point;
                         grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
                         grappleRope.enabled = true;
