@@ -112,6 +112,7 @@ public class GrapplingGun : MonoBehaviour
         grappleRope.enabled = false;
         m_springJoint2D.enabled = false;
         m_rigidbody.gravityScale = 4;
+        //AudioManager.instance.Stop("GrapplePull");
         Debug.Log("enabling gravity in grapple gun");
     }
 

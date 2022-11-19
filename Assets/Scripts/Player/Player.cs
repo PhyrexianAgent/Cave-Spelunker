@@ -124,10 +124,14 @@ public class Player : MonoBehaviour
     private void MoveInGrapple()
     {
         grappleGun.GoUp(Input.GetKey(KeyCode.W));
-        if (Input.GetKeyDown(KeyCode.W))
+        /*if (Input.GetKeyDown(KeyCode.W))
         {
             AudioManager.instance.Play("GrapplePull");
         }
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            AudioManager.instance.Stop("GrapplePull");
+        }*/
     }
 
     private void TestForGrounded()
