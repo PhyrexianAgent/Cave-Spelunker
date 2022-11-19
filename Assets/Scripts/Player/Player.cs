@@ -233,6 +233,7 @@ public class Player : MonoBehaviour
         if (!isDead)
         {
             AudioManager.instance.Play("Dead");
+            AudioManager.instance.Stop("Bat");
             isDead = true;
             CameraFollow.instance.followPlayer = false;
             PlayerDeathMenuController.instance.PlayerDied();
@@ -250,12 +251,6 @@ public class Player : MonoBehaviour
     public void SetPlayerGrapple(bool isGrappled)
     {
         SetCurrentState(isGrappled ? PlayerStates.Grappled : PlayerStates.Normal);
-    }
-
-    void Pause()
-    {
-        Time.timeScale = 0;
-        
     }
 
     public void Unpause()

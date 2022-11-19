@@ -29,6 +29,13 @@ public class BatGroupController : MonoBehaviour
     {
         awakening = true;
         AwakenBat();
+        StartCoroutine("PlayBatSound");
+    }
+
+    private IEnumerator PlayBatSound()
+    {
+        yield return new WaitForSeconds(1);
+        AudioManager.instance.Play("Bat");
     }
 
     private void AwakenBat()
