@@ -17,6 +17,8 @@ public class PlayerDeathMenuController : MonoBehaviour
     public TextMeshProUGUI text;
 
     private float timer = 0;
+
+    private bool is_active = false;
     
 
     private void Awake()
@@ -45,6 +47,7 @@ public class PlayerDeathMenuController : MonoBehaviour
     public void StartLevelEnd(string nextLevelName)
     {
         PlayerDeathMenuController.nextLevelName = nextLevelName;
+        is_active = true;
         anim.SetTrigger("End Level");
     }
 
@@ -53,6 +56,7 @@ public class PlayerDeathMenuController : MonoBehaviour
         //anim.Play();
         //SceneManager.LoadScene(scene.name);
         anim.SetTrigger("Player Died");
+        is_active = true;
     }
 
     public void ChangeLevel()
@@ -80,5 +84,10 @@ public class PlayerDeathMenuController : MonoBehaviour
     public static string GetCurrentLevel()
     {
         return nextLevelName;
+    }
+
+    public bool GetIsActive()
+    {
+        return is_active;
     }
 }
