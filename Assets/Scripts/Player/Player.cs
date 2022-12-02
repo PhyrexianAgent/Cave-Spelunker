@@ -165,6 +165,7 @@ public class Player : MonoBehaviour
         moveBy = x * speed * speedMult;
         rb.velocity = new Vector2(moveBy, rb.velocity.y);
         rb.gravityScale = currentGravScale;
+        //Debug.Log(rb.gravityScale);
     }
 
     private float GetSpeedMult()

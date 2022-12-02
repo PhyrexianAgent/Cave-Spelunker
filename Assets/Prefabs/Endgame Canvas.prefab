@@ -770,7 +770,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &927691054850849258
 RectTransform:
   m_ObjectHideFlags: 0
@@ -998,6 +998,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1867061051391800187}
   text: {fileID: 927691053234621567}
+  button_canvas: {fileID: 927691054850849253}
 --- !u!95 &1867061051391800187
 Animator:
   serializedVersion: 4

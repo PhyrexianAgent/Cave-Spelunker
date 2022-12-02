@@ -15,6 +15,7 @@ public class PlayerDeathMenuController : MonoBehaviour
 
     public Animator anim;
     public TextMeshProUGUI text;
+    public CanvasGroup button_canvas;
 
     private float timer = 0;
 
