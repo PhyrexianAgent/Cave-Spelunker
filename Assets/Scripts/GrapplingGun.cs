@@ -61,7 +61,7 @@ public class GrapplingGun : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !PlayerDeathMenuController.instance.GetIsActive() && !Input.GetKey(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !PlayerDeathMenuController.instance.GetIsActive())
         {
             SetGrapplePoint();
         }
@@ -83,6 +83,7 @@ public class GrapplingGun : MonoBehaviour
                     Vector2 firePointDistnace = firePoint.position - gunHolder.localPosition;
                     Vector2 targetPos = grapplePoint - firePointDistnace;
                     gunHolder.position = Vector2.Lerp(gunHolder.position, targetPos, Time.deltaTime * launchSpeed);
+                    //Debug.Log(m_rigidbody.gravityScale);
                 }
             }
         }
@@ -100,6 +101,7 @@ public class GrapplingGun : MonoBehaviour
     public void GoUp(bool goUp)
     {
         launchToPoint = goUp;
+        m_rigidbody.velocity = Vector2.zero;
     }
 
     public void GoDown(bool goDown)

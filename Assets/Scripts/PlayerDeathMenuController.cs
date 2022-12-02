@@ -54,8 +54,6 @@ public class PlayerDeathMenuController : MonoBehaviour
 
     public void PlayerDied()
     {
-        //anim.Play();
-        //SceneManager.LoadScene(scene.name);
         anim.SetTrigger("Player Died");
         is_active = true;
     }
@@ -69,7 +67,6 @@ public class PlayerDeathMenuController : MonoBehaviour
     {
         text.text = "That is all for this current version of the game.";
         anim.SetTrigger("Player Won");
-        //timer = 1;
     }
 
     public void RestartLevel()

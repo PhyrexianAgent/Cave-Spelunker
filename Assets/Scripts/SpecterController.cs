@@ -114,7 +114,7 @@ public class SpecterController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (currentState == SpecterState.Hiding && collision.tag != "Light")
+        if (currentState == SpecterState.Hiding && collision.tag != "Light" && collision.tag == "Player")
         {
             SetState(SpecterState.Following);
         }

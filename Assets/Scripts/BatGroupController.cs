@@ -60,7 +60,6 @@ public class BatGroupController : MonoBehaviour
             indexes[randNum] = indexes[i];
             indexes[i] = temp;
         }
-        Debug.Log(indexes[2]);
     }
 
     private int[] GetIndexes()

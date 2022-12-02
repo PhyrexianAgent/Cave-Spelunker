@@ -111,6 +111,7 @@ public class Player : MonoBehaviour
                 MoveInGrapple();
                 break;
             case PlayerStates.LockedInSpeaking:
+                Debug.Log("in speaking");
                 rb.velocity = new Vector2(0, rb.velocity.y);
                 break;
         }
@@ -123,15 +124,15 @@ public class Player : MonoBehaviour
 
     private void MoveInGrapple()
     {
-        grappleGun.GoUp(Input.GetKey(KeyCode.W));
         /*if (Input.GetKeyDown(KeyCode.W))
         {
-            AudioManager.instance.Play("GrapplePull");
+            grappleGun.GoUp(true);
         }
-        if (Input.GetKeyUp(KeyCode.W))
+        else if (Input.GetKeyUp(KeyCode.W))
         {
-            AudioManager.instance.Stop("GrapplePull");
+            grappleGun.GoUp(false);
         }*/
+        grappleGun.GoUp(Input.GetKey(KeyCode.W));
     }
 
     private void TestForGrounded()
@@ -164,7 +165,10 @@ public class Player : MonoBehaviour
         //Debug.Log(speedMult);
         moveBy = x * speed * speedMult;
         rb.velocity = new Vector2(moveBy, rb.velocity.y);
-        rb.gravityScale = currentGravScale;
+        if (currentState != PlayerStates.Grappled)
+        {
+            rb.gravityScale = currentGravScale;
+        }
         //Debug.Log(rb.gravityScale);
     }
 
