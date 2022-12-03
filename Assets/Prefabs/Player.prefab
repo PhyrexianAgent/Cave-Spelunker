@@ -85,7 +85,7 @@ MonoBehaviour:
   climbSpeed: 7
   grappleDescendSpeed: 10
   grapplingGun: {fileID: 0}
-  flashlightRayDistance: 25
+  flashlightRayDistance: 18
   stalactiteDamagedTime: 5
   stalactiteDamagedSpeedMult: 0.5
   encounteredBats: 1
@@ -140,7 +140,7 @@ SpringJoint2D:
   m_Anchor: {x: 1, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 1
+  m_Distance: 3.2912307
   m_DampingRatio: 1
   m_Frequency: 1
 --- !u!82 &9213845073850764479
