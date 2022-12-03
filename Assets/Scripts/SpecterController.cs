@@ -87,7 +87,7 @@ public class SpecterController : MonoBehaviour
         Vector3 playerPos = Player.instance.transform.position;
         Vector3 moveDir = (playerPos - transform.position).normalized;
         rigid.velocity = moveDir * followSpeed;
-        rigid.velocity = new Vector2(rigid.velocity.x, rigid.velocity.y * 4);
+        rigid.velocity = new Vector2(rigid.velocity.x, rigid.velocity.y * 6);
         render.flipX = rigid.velocity.x < 0;
         if (!canKillPlayer && Vector3.Distance(playerPos, transform.position) <= stopRange)
         {
