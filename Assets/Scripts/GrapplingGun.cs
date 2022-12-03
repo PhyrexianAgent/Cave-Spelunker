@@ -11,6 +11,7 @@ public class GrapplingGun : MonoBehaviour
     [SerializeField] private bool grappleToAll = false;
     [SerializeField] private int grappableLayerNumber = 9;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask wallLayer;
 
     [Header("Main Camera:")]
     public Camera m_camera;
@@ -52,6 +53,7 @@ public class GrapplingGun : MonoBehaviour
     [HideInInspector] public Vector2 grappleDistanceVector;
 
     private bool launchFromPoint = false;
+    private LayerMask combinedMask;
 
     private void Start()
     {

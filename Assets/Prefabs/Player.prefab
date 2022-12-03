@@ -86,6 +86,8 @@ MonoBehaviour:
   grappleDescendSpeed: 10
   grapplingGun: {fileID: 0}
   flashlightRayDistance: 25
+  stalactiteDamagedTime: 5
+  stalactiteDamagedSpeedMult: 0.5
   encounteredBats: 1
   encounteredSpecter: 1
   jumpSpeed: 15
@@ -138,7 +140,7 @@ SpringJoint2D:
   m_Anchor: {x: 1, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 3.2409875
+  m_Distance: 1
   m_DampingRatio: 1
   m_Frequency: 1
 --- !u!82 &9213845073850764479
@@ -657,6 +659,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
   m_camera: {fileID: 0}
   gunHolder: {fileID: 1655382623063545583}
   gunPivot: {fileID: 5517498009786279333}
