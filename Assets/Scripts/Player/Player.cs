@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float grappleDescendSpeed = 3;
     [SerializeField] private GrapplingGun grapplingGun;
     [SerializeField] private float flashlightRayDistance = 10;
+    [SerializeField] private float stalactiteDamagedTime = 5;
+    [SerializeField] private float stalactiteDamagedSpeedMult = 0.5f;
     private bool isGrounded = true;
     private bool isDead = false;
     public bool encounteredBats = false;
@@ -183,6 +185,10 @@ public class Player : MonoBehaviour
         {
             speedMult = SNEAK_SPEED_MULT;
         }
+        if (currentState == PlayerStates.DamagedByStalactite)
+        {
+            speedMult *= stalactiteDamagedSpeedMult;
+        }
         return speedMult;
     }
     public bool IsSneaking()
@@ -225,12 +231,30 @@ public class Player : MonoBehaviour
         {
             case "Stalactite":
                 if (collision.gameObject.GetComponent<StalactiteBehaviour>().GetIsFalling())
-                    Die();
+                    DamagedbyStalactite();
                 break;
             case "Spider":
                 Die();
                 break;
         }
+    }
+
+    private void DamagedbyStalactite()
+    {
+        if (currentState == PlayerStates.DamagedByStalactite)
+        {
+            Die();
+        }
+        else
+        {
+            SetCurrentState(PlayerStates.DamagedByStalactite);
+            Invoke("RecoveredFromStalactite", stalactiteDamagedTime);
+        }
+    }
+
+    private void RecoveredFromStalactite()
+    {
+        SetCurrentState(PlayerStates.Normal);
     }
 
     public void Die()
@@ -263,11 +287,17 @@ public class Player : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    public bool NotDamagedByStalactite()
+    {
+        return currentState != PlayerStates.DamagedByStalactite;
+    }
+
     private enum PlayerStates 
     {
         Normal,
         Grappled,
-        LockedInSpeaking
+        LockedInSpeaking,
+        DamagedByStalactite
     }
 
 }
