@@ -248,6 +248,7 @@ public class Player : MonoBehaviour
         else
         {
             SetCurrentState(PlayerStates.DamagedByStalactite);
+            PlayerDeathMenuController.instance.anim.SetTrigger("PlayerHurt");
             Invoke("RecoveredFromStalactite", stalactiteDamagedTime);
         }
     }
