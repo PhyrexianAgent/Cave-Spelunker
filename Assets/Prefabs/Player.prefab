@@ -88,6 +88,9 @@ MonoBehaviour:
   flashlightRayDistance: 18
   stalactiteDamagedTime: 5
   stalactiteDamagedSpeedMult: 0.5
+  specterLayer:
+    serializedVersion: 2
+    m_Bits: 512
   encounteredBats: 1
   encounteredSpecter: 1
   jumpSpeed: 15

@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float flashlightRayDistance = 10;
     [SerializeField] private float stalactiteDamagedTime = 5;
     [SerializeField] private float stalactiteDamagedSpeedMult = 0.5f;
+    [SerializeField] private LayerMask specterLayer;
     private bool isGrounded = true;
     private bool isDead = false;
     public bool encounteredBats = false;
@@ -79,7 +80,7 @@ public class Player : MonoBehaviour
     private void CheckFlashlightRay()
     {
         Vector3 pointDir = flashlight.transform.rotation * Vector3.up;
-        RaycastHit2D hit = Physics2D.Raycast(flashlight.transform.position, pointDir, flashlightRayDistance);
+        RaycastHit2D hit = Physics2D.Raycast(flashlight.transform.position, pointDir, flashlightRayDistance, specterLayer);
         if (hit && hit.collider.gameObject.tag == "Specter")
         {
             hit.collider.GetComponent<SpecterController>().LightHitSpecter();

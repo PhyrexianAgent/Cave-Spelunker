@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5803112817731242696}
   - component: {fileID: 5803112817731242701}
   - component: {fileID: 5803112817731242690}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Specter
   m_TagString: Specter
   m_Icon: {fileID: 0}
